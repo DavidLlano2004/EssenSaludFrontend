@@ -22,7 +22,9 @@ export const useAuthInitializer = () => {
         dispatch(
           loginCase({
             email: userData.email,
-            userName: userData.userName,
+            name: userData.name,
+            rol: userData.rol,
+            birthday: userData.birthday,
           })
         );
       } catch (error) {

@@ -10,5 +10,5 @@ const createAxiosClient = (baseURL) => {
 };
 
 export const axiosClientAuth = createAxiosClient(
-  import.meta.env.VITE_BACKEND_APP
+  import.meta.env.VITE_BACKEND_APP_PROD
 );

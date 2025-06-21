@@ -9,9 +9,10 @@ import { useDispatch } from "react-redux";
 import { CustomAlert } from "../../molecules/customAlert/CustomAlert";
 import { useNavigate } from "react-router-dom";
 import { paths } from "../../../routes/paths";
+import { loginCase } from "../../../redux/slices/authSlice/Auth.Slice";
 const { IconEmail, IconPasswordInput } = Icons;
 
-export const FormLogin = ({ setCurrentSection , toast }) => {
+export const FormLogin = ({ setCurrentSection, toast }) => {
   const [buttonLoading, setButtonLoading] = useState(false);
   const [alertext, setAlertext] = useState(null);
   const defaultValues = {
@@ -34,10 +35,9 @@ export const FormLogin = ({ setCurrentSection , toast }) => {
   const loginFunction = async () => {
     setButtonLoading(true);
     try {
-      const response = await dispatch(loginAppAction(dataForm));
-      console.log(response);
+      const data = await loginAppAction(dataForm);
 
-      const { error, verify } = response;
+      const { error, verify, response } = data;
 
       if (error) {
         setAlertext(error);
@@ -48,6 +48,7 @@ export const FormLogin = ({ setCurrentSection , toast }) => {
       if (verify) {
         navigate(paths.HOME);
         setButtonLoading(false);
+        dispatch(loginCase(response));
       }
     } catch (error) {
       console.error(error);
@@ -64,7 +65,6 @@ export const FormLogin = ({ setCurrentSection , toast }) => {
     return () => clearTimeout(timer);
   }, [alertext]);
 
-  console.log(dataForm);
 
   return (
     <form onSubmit={onSubmit} action="" className="flex flex-col gap-5">
@@ -83,6 +83,7 @@ export const FormLogin = ({ setCurrentSection , toast }) => {
           },
         }}
         placeholder="Ingresa tu correo"
+        hadleOnEnter={onSubmit}
       />
       <div>
         <InputController
@@ -94,6 +95,7 @@ export const FormLogin = ({ setCurrentSection , toast }) => {
           styleInput="border border-gray-light-custom xl:py-3 py-[10px] focus:border-black-custom transition-all ease-in duration-200 focus:outline-0 xl:text-base text-[14px] pl-12 pr-3 rounded-2xl text-black-custom w-full"
           iconInput={IconPasswordInput}
           rules={{ required: "Por favor, ingresar tu contraseña" }}
+          hadleOnEnter={onSubmit}
         />
 
         {alertext && (

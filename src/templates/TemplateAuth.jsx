@@ -12,7 +12,7 @@ const { IconWeb2, IconWeb, IconArrowLeft } = Icons;
 export const TemplateAuth = () => {
   const {
     auth: { isLogged },
-  } = useSelector((state) => state.persistedData);
+  } = useSelector((state) => state);
   console.log(isLogged);
 
   const [currentSection, setCurrentSection] = useState(0);

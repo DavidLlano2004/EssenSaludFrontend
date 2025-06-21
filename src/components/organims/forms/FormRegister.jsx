@@ -72,7 +72,7 @@ export const FormRegister = ({ toast }) => {
       };
       const response = await registerAppAction(newData);
       if (response) {
-        toast.success("¡Usuario registrado!");
+        toast.success("¡Usuario registrado correctamente!");
         setButtonLoading(false);
         setAlertText(null);
         reset({

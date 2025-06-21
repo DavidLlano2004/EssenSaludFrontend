@@ -12,25 +12,20 @@ const persistConfig = {
 
 export const rootReducer = combineReducers({
   auth: authReducer,
-//   projects: projectsReducer,
-
+  //   projects: projectsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    persistedData: persistedReducer,
-  },
+  reducer: persistedReducer,
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ["persist/PERSIST"]
+        ignoredActions: ["persist/PERSIST"],
       },
     }),
 });
 
 export const persistor = persistStore(store);
-
-
-

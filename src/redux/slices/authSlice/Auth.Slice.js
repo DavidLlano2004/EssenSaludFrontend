@@ -4,8 +4,9 @@ const initialState = {
   email: "",
   name: "",
   isLogged: false,
-  rol:"",
-  birthday:""
+  rol: "",
+  birthday: "",
+  userId: "",
 };
 
 const authSlice = createSlice({
@@ -17,6 +18,7 @@ const authSlice = createSlice({
       state.name = action.payload.name;
       state.rol = action.payload.rol;
       state.birthday = action.payload.birthday;
+      state.userId = action.payload.id;
       state.isLogged = true;
     },
     singOffCase: (state) => {
@@ -24,6 +26,7 @@ const authSlice = createSlice({
       state.name = initialState.name;
       state.rol = initialState.rol;
       state.birthday = initialState.birthday;
+      state.userId = initialState.userId;
       state.isLogged = false;
     },
   },

@@ -1,18 +1,21 @@
 import React from "react";
-import { singOffCaseAction } from "../../../redux/actions/authAction/auth.action";
 import { useDispatch } from "react-redux";
+import { singOffCase } from "../../../redux/slices/authSlice/Auth.Slice";
+import { singOffCaseAction } from "../../../redux/actions/authAction/auth.action";
 
 export const HomeApp = () => {
   const dispatch = useDispatch();
 
   const singOffCaseFunction = async () => {
     try {
-      const response = await dispatch(singOffCaseAction());
+      const response = await singOffCaseAction();
+      dispatch(singOffCase())
       console.log(response);
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <div>
       <button
