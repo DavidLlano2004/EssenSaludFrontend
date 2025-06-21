@@ -1,0 +1,13 @@
+#styled_input_bar_controller:focus + #input-label-controller,
+#styled_input_bar_controller:not(:placeholder-shown) + #input-label-controller {
+  top: 0.1em;
+  left: 1em;
+  font-size: 14px;
+  color: black;
+  background-color: white; /* IMPORTANT: Make sure you change this background color to the exact background color of your webpage or the background color of the container in which this input bar is contained. */
+  padding: 0;
+  font-weight: 600;
+}
+#styled_input_bar_controller:not(:focus):not(:placeholder-shown) + #input-label-controller {
+  color: grey;
+}
