@@ -101,7 +101,7 @@ export const FormRegister = ({ toast }) => {
       >
         <InputSimple
           errors={errors}
-          inputStyle="border border-gray-light-custom xl:py-3 py-[10px] xl:text-base text-[14px] pl-12 pr-3 rounded-2xl text-black-custom"
+          inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
           iconInput={IconUser}
           nameRegister={"name"}
           register={register}
@@ -113,7 +113,7 @@ export const FormRegister = ({ toast }) => {
         <div>
           <InputSimple
             errors={errors}
-            inputStyle="border border-gray-light-custom xl:py-3 py-[10px] xl:text-base text-[14px] pl-12 pr-3 rounded-2xl text-black-custom"
+            inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
             iconInput={IconDateInput}
             nameRegister={"birthday"}
             type="date"
@@ -128,7 +128,7 @@ export const FormRegister = ({ toast }) => {
 
         <InputSimple
           errors={errors}
-          inputStyle="border border-gray-light-custom xl:py-3 py-[10px] xl:text-base text-[14px] pl-12 pr-3 rounded-2xl text-black-custom"
+          inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
           iconInput={IconEmail}
           nameRegister={"email"}
           register={register}
@@ -147,7 +147,7 @@ export const FormRegister = ({ toast }) => {
           placeholder="Ingresa tu contraseña"
           type="password"
           styleDiv="w-full mt-6"
-          styleInput={`border border-gray-light-custom xl:py-3 py-[10px] xl:text-base text-[14px] focus:outline-0 pl-12 pr-3 rounded-2xl text-black-custom w-full  ${
+          styleInput={`border border-gray-light-custom xl:py-3 py-[10px] text-base focus:outline-0 pl-12 pr-3 rounded-2xl text-black-custom w-full  ${
             confirmPasswordBorderP
               ? confirmPasswordBorderP
               : "focus:border-black-custom transition-all ease-in duration-200 "
@@ -177,7 +177,7 @@ export const FormRegister = ({ toast }) => {
           placeholder="Confirma tu contraseña"
           type="password"
           styleDiv="w-full mt-6"
-          styleInput={`border border-gray-light-custom xl:py-3 py-[10px] xl:text-base text-[14px] focus:outline-0 pl-12 pr-3 rounded-2xl text-black-custom w-full ${
+          styleInput={`border border-gray-light-custom xl:py-3 py-[10px] text-base focus:outline-0 pl-12 pr-3 rounded-2xl text-black-custom w-full ${
             confirmPasswordBorderCP
               ? confirmPasswordBorderCP
               : "focus:border-black-custom transition-all ease-in duration-200 "
@@ -197,7 +197,7 @@ export const FormRegister = ({ toast }) => {
           bdWidth="0px"
           bgHvColor="hover:bg-primary-hover"
           width="w-full"
-          alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
+          alternativeStyle="flex items-center justify-center gap-2 text-base cursor-pointer"
           heigthButton={"xl:h-[50px] h-[43px]"}
           loading={buttonLoading}
         />

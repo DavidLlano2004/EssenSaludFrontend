@@ -7,6 +7,7 @@ import { paths } from "../routes/paths";
 import { Icons } from "../assets/icons/IconsProvider";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
+import { CarouselLogin } from "../components/organims/carousel/CarouselLogin/CarouselLogin";
 const { IconWeb2, IconWeb, IconArrowLeft } = Icons;
 
 export const TemplateAuth = () => {
@@ -83,7 +84,9 @@ export const TemplateAuth = () => {
           </div>
         </section>
       </article>
-      <article className=" bg-red-800 lg:flex hidden"></article>
+      <article className=" bg-primary lg:flex hidden">
+          <CarouselLogin />
+      </article>
     </div>
   );
 };

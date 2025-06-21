@@ -71,7 +71,7 @@ export const FormLogin = ({ setCurrentSection, toast }) => {
       <InputSimple
         label={"Correo electrónico"}
         errors={errors}
-        inputStyle="border border-gray-light-custom xl:py-3 py-[10px] xl:text-base text-[14px] pl-12 pr-3 rounded-2xl text-black-custom"
+        inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
         iconInput={IconEmail}
         nameRegister={"email"}
         register={register}
@@ -92,7 +92,7 @@ export const FormLogin = ({ setCurrentSection, toast }) => {
           placeholder="Ingresa tu contraseña"
           type="password"
           styleDiv="w-full mt-6"
-          styleInput="border border-gray-light-custom xl:py-3 py-[10px] focus:border-black-custom transition-all ease-in duration-200 focus:outline-0 xl:text-base text-[14px] pl-12 pr-3 rounded-2xl text-black-custom w-full"
+          styleInput="border border-gray-light-custom xl:py-3 py-[10px] focus:border-black-custom transition-all ease-in duration-200 focus:outline-0 text-base pl-12 pr-3 rounded-2xl text-black-custom w-full"
           iconInput={IconPasswordInput}
           rules={{ required: "Por favor, ingresar tu contraseña" }}
           hadleOnEnter={onSubmit}
