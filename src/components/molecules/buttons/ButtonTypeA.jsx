@@ -27,7 +27,7 @@ export const ButtonTypeA = ({
   const buttonStyle = {
     border: `${bdWidth} ${bdType}`,
     padding: paddingButton,
-    borderRadius: "8px",
+    borderRadius: "16px",
     fontWeight: "normal",
     margin: centrado ? "0 auto" : "inehirt",
     ...styles,

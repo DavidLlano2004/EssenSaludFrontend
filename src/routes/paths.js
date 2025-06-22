@@ -1,5 +1,6 @@
 export const paths = {
   TEMPLATEAUTH: "/",
-  TEMPLATEAPP: "/home",
-  HOME: "/home",
+  TEMPLATEAPP: "/app",
+  HOME: "/app/home",
+  HEALTHYCENTER: "/app/healthy-center",
 };

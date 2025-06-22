@@ -7,6 +7,7 @@ import { TemplateAuth } from "./templates/TemplateAuth";
 import { ProtectedRoute } from "./components/organims/protectedRoute/ProtectedRoute";
 import { HomeApp } from "./pages/app/HomeApp/HomeApp";
 import { TemplateApp } from "./templates/TemplateApp";
+import { HealthyCenters } from "./pages/app/HealthyCenters/HealthyCenters";
 
 function App() {
   useAuthInitializer();
@@ -18,6 +19,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path={paths.TEMPLATEAPP} element={<TemplateApp />}>
             <Route path={paths.HOME} element={<HomeApp />} />
+            <Route path={paths.HEALTHYCENTER} element={<HealthyCenters />} />
           </Route>
         </Route>
       </Routes>

@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { Icons } from "../assets/icons/IconsProvider";
+import { Aside } from "../components/organims/aside/Aside";
+import { Header } from "../components/organims/header/Header";
+import { MenuSm } from "../components/organims/menuSm/MenuSm";
+const { IconWeb, IconMenuHamburguesa } = Icons;
 
 export const TemplateApp = () => {
+  const [viewMenuSm, setViewMenuSm] = useState(false);
   return (
     <article className="h-[100dvh] flex">
-      <div className="bg-white lg:w-[180px] border-r border-[#E6EFF5]"></div>
-      <div className="bg-white-custom flex-1 flex flex-col">
-        <div className="h-[80px] bg-white border-b border-[#E6EFF5]"></div>
-        <div className="flex-1">
-          <Outlet />
-        </div>
+      <Aside />
+      <div className="bg-white-custom flex-1 flex flex-col overflow-hidden">
+        <Header setViewMenuSm={setViewMenuSm} />
+        <Outlet />
       </div>
+      <MenuSm isopenModal={viewMenuSm} setViewMenuSm={setViewMenuSm} />
     </article>
   );
 };

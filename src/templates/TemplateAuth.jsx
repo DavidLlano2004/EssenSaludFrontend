@@ -14,7 +14,6 @@ export const TemplateAuth = () => {
   const {
     auth: { isLogged },
   } = useSelector((state) => state);
-  console.log(isLogged);
 
   const [currentSection, setCurrentSection] = useState(0);
 

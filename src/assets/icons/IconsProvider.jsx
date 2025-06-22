@@ -8,6 +8,13 @@ import IconUser from "./icon_user.svg";
 import IconDateInput from "./icon_date_input.svg";
 import IconArrowLeft from "./icon_arrow_left.svg";
 import IconHomeBlue from "./icon_home_blue.svg";
+import IconMenuHamburguesa from "./icon_menu_hamburguesa.svg";
+import IconClose from "./icon_close.svg";
+import IconUsersBlue from "./icon_users_app_blue.svg";
+import IconUsersGray from "./icon_users_app_gray.svg";
+import IconHealthyCentersGray from "./icon_healthy_centers_gray.svg";
+import IconHealthyCentersBlue from "./icon_healthy_centers_blue.svg";
+import IconAddUser from "./icon_add_user.svg";
 
 export const Icons = {
   IconEmail,
@@ -19,5 +26,12 @@ export const Icons = {
   IconUser,
   IconDateInput,
   IconArrowLeft,
-  IconHomeBlue
+  IconHomeBlue,
+  IconMenuHamburguesa,
+  IconClose,
+  IconUsersBlue,
+  IconUsersGray,
+  IconHealthyCentersGray,
+  IconHealthyCentersBlue,
+  IconAddUser
 };
