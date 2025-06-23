@@ -2,9 +2,12 @@ import React from "react";
 import { Icons } from "../../../assets/icons/IconsProvider";
 import { paths } from "../../../routes/paths";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth.hooks";
 const { IconMenuHamburguesa } = Icons;
 
 export const Header = ({ setViewMenuSm }) => {
+  const { fetchSignOut } = useAuth();
+
   const { pathname } = useLocation();
   const routesText = {
     [paths.HOME]: "Usuarios",
@@ -21,6 +24,13 @@ export const Header = ({ setViewMenuSm }) => {
           {text}
         </h1>
       </div>
+      <button
+        className="p-2 rounded-lg bg-red-800 text-white"
+        onClick={() => fetchSignOut()}
+      >
+        {" "}
+        Cerrar sesión
+      </button>
       <div>
         <div className="sm:h-[60px] sm:w-[60px] h-[40px] w-[40px] rounded-full bg-primary"></div>
       </div>

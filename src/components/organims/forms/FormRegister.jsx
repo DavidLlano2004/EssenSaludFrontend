@@ -10,9 +10,11 @@ import { ButtonTypeA } from "../../molecules/buttons/ButtonTypeA";
 import { registerAppAction } from "../../../redux/actions/authAction/auth.action";
 import { useIsAdult } from "../../../hooks/useIsAdult";
 import { CustomAlert } from "../../molecules/customAlert/CustomAlert";
-const { IconEmail, IconUser, IconDateInput, IconPasswordInput } = Icons;
+import { CustomSelect } from "../../molecules/select/SelectSimple";
+const { IconEmail, IconUser, IconDateInput, IconPasswordInput, IconRolesGray } =
+  Icons;
 
-export const FormRegister = ({ toast }) => {
+export const FormRegister = ({ toast, rol, functionHelp }) => {
   const [focusInputPassword, setFocusInputPassword] = useState(false);
   const [flagCorrectPassword, setFlagCorrectPassword] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -52,6 +54,21 @@ export const FormRegister = ({ toast }) => {
     disable = false;
   }
 
+  const rolesApp = [
+    {
+      value: 1,
+      label: "Afiliado",
+    },
+    {
+      value: 1,
+      label: "Profesional",
+    },
+    {
+      value: 1,
+      label: "Administrador",
+    },
+  ];
+
   const esMayorDeEdad = useIsAdult(dataForm?.birthday);
 
   const registerFunction = async () => {
@@ -69,10 +86,11 @@ export const FormRegister = ({ toast }) => {
         name: dataForm?.name,
         birthday: dataForm?.birthday,
         password: dataForm?.password,
+        rol: dataForm?.rol?.label || "Afiliado",
       };
       const response = await registerAppAction(newData);
       if (response) {
-        toast.success("¡Usuario registrado correctamente!");
+        toast.success("¡Usuario registrado correctamente!", { duration: 5000 });
         setButtonLoading(false);
         setAlertText(null);
         reset({
@@ -82,7 +100,8 @@ export const FormRegister = ({ toast }) => {
           password: "",
           confirmPassword: "",
         });
-        setFlagCorrectPassword(false)
+        setFlagCorrectPassword(false);
+        functionHelp();
       }
       console.log(response);
     } catch (error) {
@@ -96,9 +115,20 @@ export const FormRegister = ({ toast }) => {
     <div>
       <form
         onSubmit={handleSubmit(registerFunction)}
-        action=""
         className="flex flex-col gap-4"
       >
+        {rol && (
+          <CustomSelect
+            control={control}
+            name="rol"
+            staticData={rolesApp}
+            rules={{ required: "El tipo de usuario es requerido" }}
+            placeholder="Tipo de usuario"
+            keyOption="label"
+            styleLabel="xl:text-base text-sm flex justify-between"
+          />
+        )}
+
         <InputSimple
           errors={errors}
           inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
@@ -191,7 +221,7 @@ export const FormRegister = ({ toast }) => {
         />
         <ButtonTypeA
           submitBtn={true}
-          text="Registrarse"
+          text={rol ? "Registrar usuario" : "Registrarse"}
           bgColor="bg-primary"
           txColor="text-white"
           bdWidth="0px"

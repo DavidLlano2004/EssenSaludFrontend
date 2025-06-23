@@ -16,12 +16,10 @@ export const InputController = ({
   placeholder = "Ingrese",
   rules = {},
   styleInput = "focus:border-black-custom transition-all ease-in duration-200 focus:outline-0 w-full h-[45px] text-black px-3 text-base border border-[#BDBDBD] rounded-md bg-transparent outline-none transition-all duration-300 focus:border-black placeholder-transparent",
-  styleLabel = "absolute left-4 top-1/2 -translate-y-1/2 text-base text-gray-500 pointer-events-none transition-all duration-300",
   type = "text",
   inputProps = {},
   idInputController = "styled_input_bar_controller",
   styleImgView = "absolute top-1/2 transform -translate-y-1/2 right-4 cursor-pointer xl:w-6 xl:h-6 w-5 h-5",
-  idBtnViewPassword = "btnViewPasswordLogin",
   iconInput,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -62,7 +60,6 @@ export const InputController = ({
             />
             {type === "password" && (
               <button
-                id={idBtnViewPassword}
                 onClick={() => setShowPassword(!showPassword)}
                 type="button"
               >

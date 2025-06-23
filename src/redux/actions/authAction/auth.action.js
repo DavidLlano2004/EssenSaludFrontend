@@ -13,15 +13,14 @@ export const loginAppAction = async (user) => {
   }
   //   };
 };
-export const registerAppAction = async (dataRegister) => {
-  const { email, name, birthday, password } = dataRegister;
+export const registerAppAction = async (dataForm) => {
+  const { email, name, birthday, password , rol } = dataForm;
   const newData = {
     email,
     name,
     birthday,
     password,
-    state: true,
-    rol: "afiliado",
+    rol,
   };
   try {
     const response = await axiosClientAuth.post("/register", newData);

@@ -22,13 +22,13 @@ export const ButtonTypeA = ({
   imgStyles,
   loading = false,
   paddingButton = "5px",
-  heigthButton
+  heigthButton,
+  buttonSecondary
 }) => {
   const buttonStyle = {
     border: `${bdWidth} ${bdType}`,
     padding: paddingButton,
     borderRadius: "16px",
-    fontWeight: "normal",
     margin: centrado ? "0 auto" : "inehirt",
     ...styles,
     idButton,
@@ -65,7 +65,7 @@ export const ButtonTypeA = ({
 
       {!loading && text}
       {loading && (
-        <div className="w-6 h-6 border-2 border-t-white border-[#b4c2dd] rounded-full animate-spin"></div>
+        <div className={`w-6 h-6 border-2  ${buttonSecondary ? "border-t-primary" : "border-t-white" } border-[#b4c2dd] rounded-full animate-spin`}></div>
       )}
     </Tag>
   );
