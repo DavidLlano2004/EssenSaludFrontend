@@ -7,7 +7,7 @@ import { TableHealthyCenters } from "../../../components/organims/tables/TableHe
 import { Icons } from "../../../assets/icons/IconsProvider";
 import { EmptyData } from "../../../components/molecules/emptyData/EmptyData";
 import { Modal } from "../../../components/organims/modal/Modal";
-import { CreateHealthyComponentModal } from "../../../components/organims/modal/createHealthyComponentModal/createHealthyComponentModal";
+import { CreateHealthyComponentModal } from "../../../components/organims/modal/createHealthyComponentModal/CreateHealthyComponentModal";
 import { useHealthyCenter } from "../../../hooks/useHealthyCenter.hooks";
 import { useSelector } from "react-redux";
 import { ValidateModal } from "../../../components/organims/modal/validateModal/ValidateModal";
