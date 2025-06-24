@@ -12,8 +12,7 @@ export const useAuthInitializer = () => {
     async function checkLogin() {
       try {
         const res = await verifyTokenRequest();
-        console.log(res);
-        
+
         if (!res.data?.response) {
           setIsLoading(false);
           dispatch(singOffCase());
@@ -27,6 +26,8 @@ export const useAuthInitializer = () => {
             name: userData?.name,
             rol: userData?.rol,
             birthday: userData?.birthday,
+            userId: userData?.id,
+            state: userData?.state,
           })
         );
       } catch (error) {

@@ -33,6 +33,7 @@ export const registerAppAction = async (dataForm) => {
 export const verifyTokenRequest = async () => {
   try {
     const response = await axiosClientAuth.get("/verify");
+    
     return response;
   } catch (error) {
     return { error: error };

@@ -1,10 +1,10 @@
-import { createAffiliateAction } from "../redux/actions/affiliatesAction/affiliates.action";
+import { createProfessionalAction } from "../redux/actions/professionalAction/professional.action";
 import { useUsers } from "./useUsers.hooks";
 
-export const useAffiliate = () => {
+export const useProfessional = () => {
   const { updateUserFunction } = useUsers();
 
-  const createAffiliateFunction = async ({
+  const createProfessionalFunction = async ({
     dataForm,
     onStart = () => {},
     onSuccess = () => {},
@@ -12,10 +12,10 @@ export const useAffiliate = () => {
     onStart();
 
     try {
-      const response = await createAffiliateAction(dataForm);
+      const response = await createProfessionalAction(dataForm);
 
       if (!response || response?.error) {
-        console.error("Error al crear el centro", response?.error);
+        console.error("Error al profesional el centro", response?.error);
         return { state: 500, error: response?.error };
       }
 
@@ -41,8 +41,7 @@ export const useAffiliate = () => {
       return { state: 500, error };
     }
   };
-
   return {
-    createAffiliateFunction,
+    createProfessionalFunction,
   };
 };

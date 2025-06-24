@@ -20,8 +20,6 @@ export const HealthyPlans = () => {
     });
   }, []);
 
-  console.log(healthyPlans);
-
   return (
     <motion.div
       initial={{ y: 20, opacity: 0 }}
@@ -46,12 +44,13 @@ export const HealthyPlans = () => {
         </div>
       ) : (
         <div className=" flex-1 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 mt-3 gap-4">
-          {healthyPlans?.map((plan) => (
+          {healthyPlans?.map((plan, i) => (
             <CardHealthyPlan
               key={plan?.id}
               namePlan={plan?.name}
               description={plan?.description}
               price={plan?.month_cost}
+              middle={i === 1}
             />
           ))}
         </div>

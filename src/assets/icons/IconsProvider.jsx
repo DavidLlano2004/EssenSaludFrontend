@@ -31,6 +31,7 @@ import IconCheckGreen from "./icon_check_green.svg";
 import IconDocumentType from "./icon_document_type.svg";
 import IconDateAppointmentBlue from "./icon_date_appointment_blue.svg";
 import IconDateAppointmentGrayLight from "./icon_date_appointment_gray_light.svg";
+import IconDoctorGrayDark from "./icon_doctor_gray_dark.svg";
 
 export const Icons = {
   IconEmail,
@@ -66,4 +67,5 @@ export const Icons = {
   IconDocumentType,
   IconDateAppointmentBlue,
   IconDateAppointmentGrayLight,
+  IconDoctorGrayDark
 };

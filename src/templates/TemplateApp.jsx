@@ -7,16 +7,22 @@ import { Modal } from "../components/organims/modal/Modal";
 import { useSelector } from "react-redux";
 import { CompleteInfoAffiliateComponentModal } from "../components/organims/modal/completeInfoAffiliateComponentModal/CompleteInfoAffiliateComponentModal";
 import toast, { Toaster } from "react-hot-toast";
+import { CompleteInfoProfessionalComponentModal } from "../components/organims/modal/completeInfoProfessionalComponentModal/completeInfoProfessionalComponentModal";
 
 export const TemplateApp = () => {
-  const { rol, state } = useSelector((state) => state.auth);
+  const { userId, rol, state } = useSelector((state) => state.auth);
   const [viewMenuSm, setViewMenuSm] = useState(false);
   const [validateInfoAffiliate, setValidateInfoAffiliate] = useState(false);
+  const [validateInfoProfesional, setValidateInfoProfesional] = useState(false);
 
   useEffect(() => {
     switch (rol) {
       case "Afiliado":
         state === 0 && setValidateInfoAffiliate(true);
+        break;
+
+      case "Profesional":
+        state === 0 && setValidateInfoProfesional(true);
         break;
 
       default:
@@ -39,6 +45,16 @@ export const TemplateApp = () => {
       >
         <CompleteInfoAffiliateComponentModal
           setValidateInfoAffiliate={setValidateInfoAffiliate}
+          toast={toast}
+        />
+      </Modal>
+      <Modal
+        isOpen={validateInfoProfesional}
+        styleHW="w-[600px]"
+        titleModal={"Completar información"}
+      >
+        <CompleteInfoProfessionalComponentModal
+          setValidateInfoProfesional={setValidateInfoProfesional}
           toast={toast}
         />
       </Modal>

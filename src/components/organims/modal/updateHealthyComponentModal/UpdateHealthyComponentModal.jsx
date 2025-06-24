@@ -36,7 +36,7 @@ export const UpdateHealthyComponentModal = ({
   };
 
   const onSuccessFunctionCreateHealthyCenter = () => {
-    toast.success("¡Centro actualizado correctamente!", { duration: 5000 });
+    toast.success("¡Centro actualizado correctamente!", { duration: 3000 });
     setButtonLoading(false);
     reset({
       name: "",
@@ -62,8 +62,6 @@ export const UpdateHealthyComponentModal = ({
       onSuccess: onSuccessFunctionCreateHealthyCenter,
     });
   };
-
-  console.log(dataForm);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-8">

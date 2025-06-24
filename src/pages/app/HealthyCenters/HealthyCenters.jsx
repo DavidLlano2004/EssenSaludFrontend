@@ -62,7 +62,7 @@ export const HealthyCenters = () => {
   const onSuccessDeleteHealthyCenter = () => {
     setLoadingButtonDeleteHealthyCenter(false);
     setIsModalDeleteHealthyCenter(false);
-    toast.success("¡Centro borrado correctamente!", { duration: 5000 });
+    toast.success("¡Centro borrado correctamente!", { duration: 3000 });
     setFlagHelpHealthyCenter((prev) => !prev);
   };
 
@@ -85,8 +85,6 @@ export const HealthyCenters = () => {
       data?.state === 200 && setLoading(false);
     });
   }, [flagHelpHealthyCenter]);
-
-  console.log(healthyCenters);
 
   return (
     <motion.div

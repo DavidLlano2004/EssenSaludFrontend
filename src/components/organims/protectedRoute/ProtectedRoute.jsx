@@ -8,8 +8,6 @@ export const ProtectedRoute = () => {
 
   const { loading } = useUIContext();
 
-  console.log(isLogged);
-
   if (loading) return <h1>Cargando...</h1>;
   if (!isLogged) return <Navigate to="/" replace />;
   return <Outlet />;

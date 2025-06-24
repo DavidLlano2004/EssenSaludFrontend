@@ -23,16 +23,8 @@ export const deleteUserAction = async (userId) => {
 };
 
 export const updateUserAction = async (userId, dataForm) => {
-  const { email, name, birthday, rol , state } = dataForm;
-  const newData = {
-    email,
-    name,
-    birthday,
-    rol,
-    state
-  };
   try {
-    const { data } = await axiosClientAuth.put(`/profile/${userId}`, newData);
+    const { data } = await axiosClientAuth.put(`/profile/${userId}`, dataForm);
     return data;
   } catch (error) {
     return { error: error };

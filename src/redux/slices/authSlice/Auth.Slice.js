@@ -19,7 +19,7 @@ const authSlice = createSlice({
       state.name = action.payload.name;
       state.rol = action.payload.rol;
       state.birthday = action.payload.birthday;
-      state.userId = action.payload.id;
+      state.userId = action.payload.userId;
       state.state = action.payload.state;
       state.isLogged = true;
     },

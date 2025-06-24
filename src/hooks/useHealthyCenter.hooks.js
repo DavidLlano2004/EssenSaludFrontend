@@ -32,7 +32,6 @@ export const useHealthyCenter = () => {
 
     try {
       const response = await createHealthyCenterAction(dataForm);
-      console.log(response);
 
       if (!response || response?.error) {
         console.error("Error al crear el centro", response?.error);

@@ -77,9 +77,6 @@ export const InputSimple = ({
           />
         </div>
 
-        {console.log(errorMessage)}
-        {console.log(errors[nameRegister]?.type)}
-
         {errorMessage
           ? errorMessage && <CustomAlert message={errorMessage} type="error" />
           : errors?.[nameRegister] && (

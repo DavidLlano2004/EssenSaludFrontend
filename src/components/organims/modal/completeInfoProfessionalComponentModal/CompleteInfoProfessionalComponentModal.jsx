@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputSimple } from "../../../molecules/inputs/InputSimple";
 import { useForm } from "react-hook-form";
 import { Icons } from "../../../../assets/icons/IconsProvider";
 import { CustomSelect } from "../../../molecules/select/SelectSimple";
 import { ButtonTypeA } from "../../../molecules/buttons/ButtonTypeA";
-import { useAffiliate } from "../../../../hooks/useAffiliates.hooks";
 import { useSelector } from "react-redux";
-const { IconDocumentType, IconLocationGray, IconPhoneGrayDark } = Icons;
+import { useHealthyCenter } from "../../../../hooks/useHealthyCenter.hooks";
+import { useProfessional } from "../../../../hooks/useProfessional.hooks";
+const { IconDocumentType, IconDoctorGrayDark } = Icons;
 
-export const CompleteInfoAffiliateComponentModal = ({
+export const CompleteInfoProfessionalComponentModal = ({
+  setValidateInfoProfesional,
   toast,
-  setValidateInfoAffiliate,
 }) => {
+  const { getAllHealthyCentersFunction } = useHealthyCenter();
+  const { createProfessionalFunction } = useProfessional();
   const { userId } = useSelector((state) => state.auth);
-  const { createAffiliateFunction } = useAffiliate();
+  const { healthyCenters } = useSelector((state) => state.healthyCenter);
   const [buttonLoading, setButtonLoading] = useState(false);
   const {
     formState: { errors },
@@ -23,52 +26,41 @@ export const CompleteInfoAffiliateComponentModal = ({
     handleSubmit,
     reset,
   } = useForm();
-  const dataForm = watch();
-  const documentTypes = [
-    {
-      value: 1,
-      label: "CC",
-    },
-    {
-      value: 2,
-      label: "CE",
-    },
-    {
-      value: 3,
-      label: "TI",
-    },
-  ];
 
-  const onStartFunctionCreateHealthyCenter = () => {
+  const dataForm = watch();
+
+  const onStartFunctionCreateProfessional = () => {
     setButtonLoading(true);
   };
 
-  const onSuccessFunctionCreateHealthyCenter = () => {
+  const onSuccessFunctionCreateProfessional = () => {
     toast.success("¡Información completada exitosamente!", { duration: 3000 });
     setButtonLoading(false);
     reset({
-      document_type: null,
-      document_number: "",
-      address: "",
-      phone: "",
+      specialty: "",
+      license_number: "",
+      centerId: null,
     });
-    setValidateInfoAffiliate(false);
+    setValidateInfoProfesional(false);
   };
 
   const onSubmit = () => {
     const newData = {
       userId: userId,
-      document_type: dataForm?.document_type?.label,
-      document_number: dataForm?.document_number,
-      address: dataForm?.address,
-      phone: dataForm?.phone,
+      specialty: dataForm?.specialty,
+      license_number: dataForm?.license_number,
+      centerId: dataForm?.centerId?.value,
     };
-    createAffiliateFunction({
+    createProfessionalFunction({
       dataForm: newData,
-      onStart: onStartFunctionCreateHealthyCenter,
-      onSuccess: onSuccessFunctionCreateHealthyCenter,
+      onStart: onStartFunctionCreateProfessional,
+      onSuccess: onSuccessFunctionCreateProfessional,
     });
   };
+
+  useEffect(() => {
+    getAllHealthyCentersFunction();
+  }, []);
 
   return (
     <div className="mt-3">
@@ -76,48 +68,41 @@ export const CompleteInfoAffiliateComponentModal = ({
         <p>Para poder seguir debes de completar información personal.</p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} action="">
-        <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 mt-6">
-          <CustomSelect
-            control={control}
-            name="document_type"
-            staticData={documentTypes}
-            rules={{ required: "El tipo de usuario es requerido" }}
-            placeholder="Tipo de documento"
-            keyOption="label"
-            styleLabel="xl:text-base text-sm flex justify-between"
+        <div className="grid grid-cols-1 gap-4 mt-6">
+          <InputSimple
+            errors={errors}
+            inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
+            iconInput={IconDoctorGrayDark}
+            nameRegister={"specialty"}
+            register={register}
+            validations={{
+              required: "La especialidad es requerida",
+            }}
+            placeholder="Especialidad"
           />
+
           <InputSimple
             errors={errors}
             inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
             iconInput={IconDocumentType}
-            nameRegister={"document_number"}
+            nameRegister={"license_number"}
             register={register}
             validations={{
-              required: "El documento es requerido",
+              required: "El número de licencia es requerido",
             }}
-            placeholder="Documento"
+            placeholder="Número de licencia"
           />
-          <InputSimple
-            errors={errors}
-            inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
-            iconInput={IconLocationGray}
-            nameRegister={"address"}
-            register={register}
-            validations={{
-              required: "La dirección es requerida",
-            }}
-            placeholder="Dirección"
-          />
-          <InputSimple
-            errors={errors}
-            inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
-            iconInput={IconPhoneGrayDark}
-            nameRegister={"phone"}
-            register={register}
-            validations={{
-              required: "El teléfono es requerido",
-            }}
-            placeholder="Teléfono"
+
+          <CustomSelect
+            control={control}
+            name="centerId"
+            staticData={healthyCenters}
+            rules={{ required: "El centro de salud es requerido" }}
+            placeholder="Centro de salud"
+            keyOption="label"
+            styleLabel="xl:text-base text-sm flex justify-between"
+            keyLabel={"name"}
+            keyValue={"id"}
           />
         </div>
         <div className="mt-6">

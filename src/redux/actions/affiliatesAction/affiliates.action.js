@@ -1,10 +1,14 @@
 import { axiosClientAuth } from "../../../config/AxiosClient";
 
 export const createAffiliateAction = async (dataForm) => {
-  console.log(dataForm);
+  
+  const newData = {
+    ...dataForm,
+    healthyPlanId: null,
+  };
 
   try {
-    const { data } = await axiosClientAuth.post("/affiliate", dataForm);
+    const { data } = await axiosClientAuth.post("/affiliate", newData);
     return data;
   } catch (error) {
     console.error(error);

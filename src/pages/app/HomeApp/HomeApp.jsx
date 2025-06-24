@@ -75,7 +75,7 @@ export const HomeApp = () => {
   };
 
   const flagDeleteUser = () => {
-    toast.success("¡Usuario eliminado correctamente!", { duration: 5000 });
+    toast.success("¡Usuario eliminado correctamente!", { duration: 3000 });
     setUserId("");
     setOpenModalDeleteUser(false);
     setFlagCreateUserHome((prev) => !prev);

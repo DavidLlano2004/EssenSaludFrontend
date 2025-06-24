@@ -39,7 +39,6 @@ export const InputController = ({
                 <img className="xl:w-6 xl:h-6 w-5 h-5" src={iconInput} alt="" />
               </div>
             )}
-            {console.log(error)}
             <input
               id={idInputController}
               data-testid="inputController"

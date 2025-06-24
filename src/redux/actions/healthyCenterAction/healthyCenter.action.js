@@ -6,7 +6,6 @@ export const getAllHealthyCentersAction = () => {
     try {
       const { data } = await axiosClientAuth.get("/healthy-center");
       dispatch(getAllHealthyCentersSlice(data?.response));
-      console.log(data);
       return data;
     } catch (error) {
       return { error: error };
@@ -41,8 +40,6 @@ export const updateHealthyCenterAction = async (healthyCenterId, dataForm) => {
       `/healthy-center/${healthyCenterId}`,
       dataForm
     );
-    console.log(data);
-
     return data;
   } catch (error) {
     return { error: error };

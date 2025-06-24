@@ -90,7 +90,7 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
       };
       const response = await registerAppAction(newData);
       if (response) {
-        toast.success("¡Usuario registrado correctamente!", { duration: 5000 });
+        toast.success("¡Usuario registrado correctamente!", { duration: 3000 });
         setButtonLoading(false);
         setAlertText(null);
         reset({
@@ -103,13 +103,10 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
         setFlagCorrectPassword(false);
         functionHelp();
       }
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
   };
-
-  console.log(dataForm);
 
   return (
     <div>

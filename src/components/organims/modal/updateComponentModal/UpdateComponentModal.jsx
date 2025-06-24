@@ -88,7 +88,7 @@ export const UpdateComponentModal = ({
   };
 
   const onSuccessFunctionUpdateUser = () => {
-    toast.success("¡Usuario editado correctamente!", { duration: 5000 });
+    toast.success("¡Usuario editado correctamente!", { duration: 3000 });
     setButtonLoading(false);
     setAlertText(null);
     setFlagCreateUserHome((prev) => !prev);
@@ -118,9 +118,6 @@ export const UpdateComponentModal = ({
       onSuccess: onSuccessFunctionUpdateUser,
     });
   };
-
-  console.log(dataForm);
-  console.log(userData);
 
   return (
     <div className="mt-6">
