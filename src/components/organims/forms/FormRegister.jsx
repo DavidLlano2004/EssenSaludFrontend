@@ -60,12 +60,12 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
       label: "Afiliado",
     },
     {
-      value: 1,
+      value: 2,
       label: "Profesional",
     },
     {
-      value: 1,
-      label: "Administrador",
+      value: 3,
+      label: "Administrativo",
     },
   ];
 

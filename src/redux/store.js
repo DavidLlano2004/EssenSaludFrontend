@@ -3,16 +3,20 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./slices/authSlice/Auth.Slice.js";
 import userReducer from "./slices/userSlice/user.slice.js";
+import healthyCenterReducer from "./slices/healthyCenterSlice/healthyCenter.slice.js";
+import healthyPlanReducer from "./slices/healthyPlansSlice/healthyPlans.slice.js";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "user"],
+  whitelist: ["auth", "user", "healthyCenter", "healthyPlan"],
 };
 
 export const appReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
+  healthyCenter: healthyCenterReducer,
+  healthyPlan: healthyPlanReducer,
 });
 
 const rootReducer = (state, action) => {
@@ -30,7 +34,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ["persist/PERSIST" , "persist/PURGE"],
+        ignoredActions: ["persist/PERSIST", "persist/PURGE"],
       },
     }),
 });

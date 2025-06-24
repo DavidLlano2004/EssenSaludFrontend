@@ -12,6 +12,8 @@ export const Header = ({ setViewMenuSm }) => {
   const routesText = {
     [paths.HOME]: "Usuarios",
     [paths.HEALTHYCENTER]: "Centros de salud",
+    [paths.HEALTHYPLANS]: "Planes de salud",
+    [paths.APPOINTMENTS]: "Citas",
   };
   const text = routesText[pathname] || "Sección no reconocida";
   return (
@@ -19,7 +21,7 @@ export const Header = ({ setViewMenuSm }) => {
       <button className="sm:hidden flex" onClick={() => setViewMenuSm(true)}>
         <img className="w-7" src={IconMenuHamburguesa} alt="" />
       </button>
-      <div className=" flex items-center justify-center px-0">
+      <div className=" sm:flex hidden items-center justify-center px-0">
         <h1 className="font-semibold text-black-custom sm:text-xl text-lg">
           {text}
         </h1>

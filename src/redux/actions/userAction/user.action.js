@@ -33,8 +33,6 @@ export const updateUserAction = async (userId, dataForm) => {
   };
   try {
     const { data } = await axiosClientAuth.put(`/profile/${userId}`, newData);
-    console.log(data);
-    
     return data;
   } catch (error) {
     return { error: error };

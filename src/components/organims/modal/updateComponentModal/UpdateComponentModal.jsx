@@ -15,7 +15,14 @@ import { useUsers } from "../../../../hooks/useUsers.hooks";
 const { IconEmail, IconUser, IconDateInput, IconPasswordInput, IconRolesGray } =
   Icons;
 
-export const UpdateComponentModal = ({ toast, rol, userId, userData , setFlagCreateUserHome , closeModalUpdateUser }) => {
+export const UpdateComponentModal = ({
+  toast,
+  rol,
+  userId,
+  userData,
+  setFlagCreateUserHome,
+  closeModalUpdateUser,
+}) => {
   const { updateUserFunction } = useUsers();
   const [buttonLoading, setButtonLoading] = useState(false);
   const [alertText, setAlertText] = useState(null);
@@ -46,7 +53,7 @@ export const UpdateComponentModal = ({ toast, rol, userId, userData , setFlagCre
     },
     {
       value: 3,
-      label: "Administrador",
+      label: "Administrativo",
     },
   ];
 
@@ -84,7 +91,7 @@ export const UpdateComponentModal = ({ toast, rol, userId, userData , setFlagCre
     toast.success("¡Usuario editado correctamente!", { duration: 5000 });
     setButtonLoading(false);
     setAlertText(null);
-    setFlagCreateUserHome((prev)=>!prev)
+    setFlagCreateUserHome((prev) => !prev);
     reset({
       name: "",
       birthday: "",
@@ -92,7 +99,7 @@ export const UpdateComponentModal = ({ toast, rol, userId, userData , setFlagCre
       password: "",
       confirmPassword: "",
     });
-    closeModalUpdateUser()
+    closeModalUpdateUser();
     setFlagCorrectPassword(false);
   };
 
@@ -111,6 +118,9 @@ export const UpdateComponentModal = ({ toast, rol, userId, userData , setFlagCre
       onSuccess: onSuccessFunctionUpdateUser,
     });
   };
+
+  console.log(dataForm);
+  console.log(userData);
 
   return (
     <div className="mt-6">

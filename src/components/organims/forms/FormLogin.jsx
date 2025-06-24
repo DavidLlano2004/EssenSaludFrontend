@@ -48,7 +48,7 @@ export const FormLogin = ({ setCurrentSection, toast }) => {
       if (verify) {
         navigate(paths.HOME);
         setButtonLoading(false);
-        dispatch(loginCase(response));
+        dispatch(loginCase(response?.response));
       }
     } catch (error) {
       console.error(error);

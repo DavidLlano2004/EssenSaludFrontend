@@ -5,7 +5,6 @@ import { ButtonTypeA } from "../../../components/molecules/buttons/ButtonTypeA";
 import { Icons } from "../../../assets/icons/IconsProvider";
 import { TableUsers } from "../../../components/organims/tables/TableUsers";
 import { useUsers } from "../../../hooks/useUsers.hooks";
-import { useAuth } from "../../../hooks/useAuth.hooks";
 import { LoaderComponent } from "../../../components/molecules/loader/LoaderComponent";
 import { EmptyData } from "../../../components/molecules/emptyData/EmptyData";
 import { Modal } from "../../../components/organims/modal/Modal";
@@ -13,14 +12,12 @@ import toast, { Toaster } from "react-hot-toast";
 import { CreateUserComponentModal } from "../../../components/organims/modal/createUserComponentModal/CreateUserComponentModal";
 import { ValidateModal } from "../../../components/organims/modal/validateModal/ValidateModal";
 import { InfoUserComponentModal } from "../../../components/organims/modal/infoUserComponentModal/InfoUserComponentModal";
-import { UpdateComponentModal } from "../../../components/organims/modal/updateComponentModal/updateComponentModal";
+import { UpdateComponentModal } from "../../../components/organims/modal/updateComponentModal/UpdateComponentModal";
 
-const { IconAddUser, IconEmptyBlue } = Icons;
+const { IconAddUser } = Icons;
 
 export const HomeApp = () => {
-  const {
-    user: { users },
-  } = useSelector((state) => state);
+  const { users } = useSelector((state) => state.user);
 
   const { fetchAllUsers, deleteUserFunction } = useUsers();
 
@@ -221,6 +218,9 @@ export const HomeApp = () => {
           actionCancel={() => closeModalDeleteUser()}
           actionDelete={() => deleteUserFunction(userId, flagDeleteUser)}
           title={"¿Estás seguro de borrar el usuario?"}
+          subtitle={
+            "Perderás toda la información relacionada con este usuario."
+          }
         />
       </Modal>
       <Modal

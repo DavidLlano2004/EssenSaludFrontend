@@ -12,19 +12,21 @@ export const useAuthInitializer = () => {
     async function checkLogin() {
       try {
         const res = await verifyTokenRequest();
+        console.log(res);
+        
         if (!res.data?.response) {
           setIsLoading(false);
           dispatch(singOffCase());
           return;
         }
 
-        const userData = res.data.response;
+        const userData = res?.data?.response;
         dispatch(
           loginCase({
-            email: userData.email,
-            name: userData.name,
-            rol: userData.rol,
-            birthday: userData.birthday,
+            email: userData?.email,
+            name: userData?.name,
+            rol: userData?.rol,
+            birthday: userData?.birthday,
           })
         );
       } catch (error) {

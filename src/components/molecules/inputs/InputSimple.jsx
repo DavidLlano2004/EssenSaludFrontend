@@ -55,10 +55,10 @@ export const InputSimple = ({
             max={feature ? null : formattedToday}
             data-testid={dataTestId}
             className={` focus:border-black-custom transition-all ease-in duration-200 focus:outline-0 ${
-                errors[nameRegister]?.type && " border-red-custom"
-              } ${
+              errors[nameRegister]?.type && " border-red-custom"
+            } ${
               disabled
-                ? "h-[37px] bg-[#dfdfdf] px-3 py-4 outline-none border-[#BDBDBD] border rounded-md w-full"
+                ? "bg-[#dfdfdf] border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
                 : inputStyle
             } ${width}`}
             type={type}
@@ -73,7 +73,7 @@ export const InputSimple = ({
                 hadleOnEnter();
               }
             }}
-            {...( onChangeInput ? { onChange: onChangeInput } : null)}
+            {...(onChangeInput ? { onChange: onChangeInput } : null)}
           />
         </div>
 

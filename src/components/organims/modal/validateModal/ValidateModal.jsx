@@ -1,16 +1,19 @@
 import React from "react";
 import { ButtonTypeA } from "../../../molecules/buttons/ButtonTypeA";
 
-export const ValidateModal = ({ title, subtitle , actionCancel  , actionDelete}) => {
+export const ValidateModal = ({
+  title,
+  subtitle,
+  actionCancel,
+  actionDelete,
+  loadingButton,
+}) => {
   return (
     <div className="flex flex-col items-center mt-4">
       <h1 className="sm:text-xl text-lg text-center text-black-custom font-semibold">
         {title}
       </h1>
-      <p className="text-center sm:text-base text-sm mt-2">
-        Perderás toda la información relacionada con este usuario.
-        {subtitle}
-      </p>
+      <p className="text-center sm:text-base text-sm mt-2">{subtitle}</p>
       <div className="w-full flex mt-8 gap-3 mb-3 ">
         <ButtonTypeA
           action={actionCancel}
@@ -38,6 +41,7 @@ export const ValidateModal = ({ title, subtitle , actionCancel  , actionDelete})
           heigthButton={" h-[40px]"}
           imgStyles={"w-[18px]"}
           buttonSecondary={true}
+          loading={loadingButton}
         />
       </div>
     </div>

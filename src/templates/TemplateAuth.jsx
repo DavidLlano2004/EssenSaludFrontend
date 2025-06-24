@@ -11,9 +11,7 @@ import { CarouselLogin } from "../components/organims/carousel/CarouselLogin/Car
 const { IconWeb2, IconWeb, IconArrowLeft } = Icons;
 
 export const TemplateAuth = () => {
-  const {
-    auth: { isLogged },
-  } = useSelector((state) => state);
+  const { isLogged } = useSelector((state) => state.auth);
 
   const [currentSection, setCurrentSection] = useState(0);
 
@@ -84,7 +82,7 @@ export const TemplateAuth = () => {
         </section>
       </article>
       <article className=" bg-primary lg:flex hidden">
-          <CarouselLogin />
+        <CarouselLogin />
       </article>
     </div>
   );

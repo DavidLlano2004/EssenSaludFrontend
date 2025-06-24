@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={<p>Cargando datos...</p>} persistor={persistor}>
           <UIProvider>
             <App />
           </UIProvider>

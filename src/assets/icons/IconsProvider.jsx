@@ -20,6 +20,17 @@ import IconRolesGray from "./icon_roles_gray.svg";
 import IconDeleteRed from "./icon_delete_red.svg";
 import IconEditYellow from "./icon_edit_yellow.svg";
 import IconSeeGreen from "./icon_see_green.svg";
+import IconAddHealthyCenterWhite from "./icon_add_healthy_center_white.svg";
+import IconLocationGray from "./icon_location_gray.svg";
+import IconHealthyCentersGrayDark from "./icon_healthy_centers_gray_dark.svg";
+import IconPhoneGrayDark from "./icon_phone_gray_dark.svg";
+import IconCityGrayDark from "./icon_city_gray_dark.svg";
+import IconPriceGrayLight from "./icon_price_gray_light.svg";
+import IconPriceBlue from "./icon_price_blue.svg";
+import IconCheckGreen from "./icon_check_green.svg";
+import IconDocumentType from "./icon_document_type.svg";
+import IconDateAppointmentBlue from "./icon_date_appointment_blue.svg";
+import IconDateAppointmentGrayLight from "./icon_date_appointment_gray_light.svg";
 
 export const Icons = {
   IconEmail,
@@ -44,4 +55,15 @@ export const Icons = {
   IconDeleteRed,
   IconEditYellow,
   IconSeeGreen,
+  IconAddHealthyCenterWhite,
+  IconLocationGray,
+  IconHealthyCentersGrayDark,
+  IconPhoneGrayDark,
+  IconCityGrayDark,
+  IconPriceGrayLight,
+  IconPriceBlue,
+  IconCheckGreen,
+  IconDocumentType,
+  IconDateAppointmentBlue,
+  IconDateAppointmentGrayLight,
 };

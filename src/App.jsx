@@ -8,6 +8,10 @@ import { ProtectedRoute } from "./components/organims/protectedRoute/ProtectedRo
 import { HomeApp } from "./pages/app/HomeApp/HomeApp";
 import { TemplateApp } from "./templates/TemplateApp";
 import { HealthyCenters } from "./pages/app/HealthyCenters/HealthyCenters";
+import { HealthyPlans } from "./pages/app/HealthyPlans/HealthyPlans";
+import { ProtectedRouteByRole } from "./components/organims/protectedRoute/ProtectedRouteByRole";
+import { RedirectByRole } from "./components/organims/protectedRoute/RedirectByRole";
+import { Appointments } from "./pages/app/Appointments/Appointments";
 
 function App() {
   useAuthInitializer();
@@ -16,10 +20,16 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path={paths.TEMPLATEAUTH} element={<TemplateAuth />} />
+
         <Route element={<ProtectedRoute />}>
           <Route path={paths.TEMPLATEAPP} element={<TemplateApp />}>
-            <Route path={paths.HOME} element={<HomeApp />} />
-            <Route path={paths.HEALTHYCENTER} element={<HealthyCenters />} />
+            <Route index element={<RedirectByRole />} />
+            <Route element={<ProtectedRouteByRole />}>
+              <Route path={paths.HOME} element={<HomeApp />} />
+              <Route path={paths.HEALTHYCENTER} element={<HealthyCenters />} />
+              <Route path={paths.HEALTHYPLANS} element={<HealthyPlans />} />
+              <Route path={paths.APPOINTMENTS} element={<Appointments />} />
+            </Route>
           </Route>
         </Route>
       </Routes>
