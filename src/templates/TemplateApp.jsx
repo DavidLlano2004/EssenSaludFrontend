@@ -7,7 +7,7 @@ import { Modal } from "../components/organims/modal/Modal";
 import { useSelector } from "react-redux";
 import { CompleteInfoAffiliateComponentModal } from "../components/organims/modal/completeInfoAffiliateComponentModal/CompleteInfoAffiliateComponentModal";
 import toast, { Toaster } from "react-hot-toast";
-import { CompleteInfoProfessionalComponentModal } from "../components/organims/modal/completeInfoProfessionalComponentModal/completeInfoProfessionalComponentModal";
+import { CompleteInfoProfessionalComponentModal } from "../components/organims/modal/completeInfoProfessionalComponentModal/CompleteInfoProfessionalComponentModal";
 
 export const TemplateApp = () => {
   const { userId, rol, state } = useSelector((state) => state.auth);
