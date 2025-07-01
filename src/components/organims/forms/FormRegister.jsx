@@ -109,7 +109,7 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
   };
 
   return (
-    <div>
+    <div className="flex-1">
       <form
         onSubmit={handleSubmit(registerFunction)}
         className="flex flex-col gap-4"
@@ -187,7 +187,6 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
           }}
         />
 
-        {/* Aquí aparecen las reglas solo cuando se enfoca el input */}
         {focusInputPassword && (
           <RulesPassword
             arrayRulesPassword={arrayRulesPassword(password)}

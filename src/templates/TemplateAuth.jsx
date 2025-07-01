@@ -25,9 +25,9 @@ export const TemplateAuth = () => {
   }
 
   return (
-    <div className="w-full h-[100dvh] grid lg:grid-cols-2 grid-cols-1">
+    <div className="w-full h-[100dvh] grid lg:grid-cols-2 grid-cols-1 overflow-hidden relative">
       <Toaster position="bottom-left" reverseOrder={true} />
-      <article className=" flex flex-col">
+      <article className=" flex flex-col overflow-y-auto">
         <section className=" w-full h-[100px] flex justify-center items-center gap-2">
           <div className="w-8 h-8">
             <img className="w-full h-full" src={IconWeb} alt="" />
@@ -36,7 +36,7 @@ export const TemplateAuth = () => {
             EssenSalud
           </h1>
         </section>
-        <section className=" w-full flex-1 flex flex-col justify-center items-center">
+        <section className=" w-full flex-1 flex flex-col justify-center items-center pb-3">
           <div className="w-auto px-5 max-w-[450px] ">
             {currentSection === 1 && (
               <div className=" mb-10">
@@ -68,7 +68,6 @@ export const TemplateAuth = () => {
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: -20, opacity: 0 }}
-                    // transition={{ type: "spring", stiffness: 700, damping: 20 }}
                     transition={{ duration: 0.2 }}
                     className="w-full h-full"
                     key={dataId}
