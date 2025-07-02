@@ -36,6 +36,7 @@ export const TemplateAuth = () => {
             EssenSalud
           </h1>
         </section>
+        
         <section className=" w-full flex-1 flex flex-col justify-center items-center pb-3">
           <div className="w-auto px-5 max-w-[450px] ">
             {currentSection === 1 && (
