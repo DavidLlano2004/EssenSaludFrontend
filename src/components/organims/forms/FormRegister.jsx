@@ -69,38 +69,39 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
     },
   ];
 
-  const esMayorDeEdad = useIsAdult(dataForm?.birthday);
+  const esMayorDeEdad = useIsAdult(dataForm?.birthday);// hook que verifica si el usuario es mayor de edad
 
-  const registerFunction = async () => {
-    setButtonLoading(true);
+  const registerFunction = async () => {// función que se encarga de registrar al usuario
+    setButtonLoading(true);// inicia el loading del botón
+    setAlertText(null);// reinicia el texto de alerta
 
-    if (!esMayorDeEdad) {
-      setButtonLoading(false);
-      setAlertText("Debe de ser mayor de edad");
-      return;
+    if (!esMayorDeEdad) {// verifica si el usuario es mayor de edad
+      setButtonLoading(false);// detiene el loading del botón
+      setAlertText("Debe de ser mayor de edad");// muestra un mensaje de alerta
+      return;// detiene la ejecución de la función
     }
 
-    try {
-      const newData = {
-        email: dataForm?.email,
-        name: dataForm?.name,
-        birthday: dataForm?.birthday,
-        password: dataForm?.password,
-        rol: dataForm?.rol?.label || "Afiliado",
+    try {// intenta registrar al usuario
+      const newData = {// crea un objeto con los datos del formulario
+        email: dataForm?.email,// obtiene el correo del formulario
+        name: dataForm?.name,// obtiene el nombre del formulario
+        birthday: dataForm?.birthday,// obtiene la fecha de nacimiento del formulario
+        password: dataForm?.password,// obtiene la contraseña del formulario
+        rol: dataForm?.rol?.label || "Afiliado",// obtiene el rol del formulario, si no se selecciona uno, por defecto es "Afiliado"
       };
-      const response = await registerAppAction(newData);
-      if (response) {
-        toast.success("¡Usuario registrado correctamente!", { duration: 3000 });
-        setButtonLoading(false);
-        setAlertText(null);
-        reset({
+      const response = await registerAppAction(newData);// hace la petición para registrar al usuario
+      if (response) {// si la respuesta es exitosa
+        toast.success("¡Usuario registrado correctamente!", { duration: 3000 });// muestra un mensaje de éxito
+        setButtonLoading(false);// detiene el loading del botón
+        setAlertText(null);// reinicia el texto de alerta
+        reset({// reinicia el formulario
           name: "",
           birthday: "",
           email: "",
           password: "",
           confirmPassword: "",
         });
-        setFlagCorrectPassword(false);
+        setFlagCorrectPassword(false);// reinicia el estado de la contraseña
         functionHelp();
       }
     } catch (error) {

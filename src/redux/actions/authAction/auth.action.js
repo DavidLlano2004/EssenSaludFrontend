@@ -1,7 +1,7 @@
 import { axiosClientAuth } from "../../../config/AxiosClient";
 import { loginCase, singOffCase } from "../../slices/authSlice/Auth.Slice";
 
-export const loginAppAction = async (user) => {
+export const loginAppAction = async (user) => {//funcion que hace el llamado para loguear un usuario
   //   return async (dispatch) => {
   try {
     const { data } = await axiosClientAuth.post("/login", user);
@@ -13,8 +13,8 @@ export const loginAppAction = async (user) => {
   }
   //   };
 };
-export const registerAppAction = async (dataForm) => {
-  const { email, name, birthday, password , rol } = dataForm;
+export const registerAppAction = async (dataForm) => {//funcion que hace el llamado apra registrar un usuario
+  const { email, name, birthday, password , rol } = dataForm;//desestructuración de los datos del formulario
   const newData = {
     email,
     name,
@@ -22,10 +22,10 @@ export const registerAppAction = async (dataForm) => {
     password,
     rol,
   };
-  try {
-    const response = await axiosClientAuth.post("/register", newData);
-    return { verify: true, response: response?.data };
-  } catch (error) {
+  try {// intenta registrar al usuario
+    const response = await axiosClientAuth.post("/register", newData);// hace la petición para registrar al usuario
+    return { verify: true, response: response?.data };// si la respuesta es exitosa
+  } catch (error) {// si ocurre un error
     return { error: error, verify: false };
   }
 };

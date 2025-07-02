@@ -32,7 +32,7 @@ export const FormLogin = ({ setCurrentSection, toast }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const loginFunction = async () => {
+  const loginFunction = async () => {// funcion que se encarga de loguear al usuario visualizando un mensaje de error si no se loguea correctamente
     setButtonLoading(true);
     try {
       const data = await loginAppAction(dataForm);
