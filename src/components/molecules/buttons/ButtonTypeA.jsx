@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 export const ButtonTypeA = ({
@@ -23,7 +24,9 @@ export const ButtonTypeA = ({
   loading = false,
   paddingButton = "5px",
   heigthButton,
-  buttonSecondary
+  buttonSecondary,
+  imgAnimated = false,
+  checkPlan = false
 }) => {
   const buttonStyle = {
     border: `${bdWidth} ${bdType}`,
@@ -61,11 +64,29 @@ export const ButtonTypeA = ({
       onClick={!link ? action : undefined}
       {...extraProps}
     >
-      {img && <img src={img} alt="icono" className={`${imgStyles}`} />}
-
       {!loading && text}
+
+      {imgAnimated && checkPlan && (
+        <motion.div
+          initial={{ x: 20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -20, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <img src={img} alt="icono" className={`${imgStyles}`} />
+        </motion.div>
+      )}
+
+      {img && !imgAnimated && (
+        <img src={img} alt="icono" className={`${imgStyles}`} />
+      )}
+
       {loading && (
-        <div className={`w-6 h-6 border-2  ${buttonSecondary ? "border-t-primary" : "border-t-white" } border-[#b4c2dd] rounded-full animate-spin`}></div>
+        <div
+          className={`w-6 h-6 border-2  ${
+            buttonSecondary ? "border-t-primary" : "border-t-white"
+          } border-[#b4c2dd] rounded-full animate-spin`}
+        ></div>
       )}
     </Tag>
   );

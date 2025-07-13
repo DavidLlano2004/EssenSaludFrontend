@@ -1,9 +1,9 @@
-.swiper {
+.mySwiperLogin {
     width: 100%;
     height: 100%;
 }
 
-.swiper-slide {
+.swiper-slide-login {
     text-align: center;
     font-size: 18px;
     background: #444;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.swiper-slide img {
+.swiper-slide-login img {
     display: block;
     width: 100%;
     height: 100%;

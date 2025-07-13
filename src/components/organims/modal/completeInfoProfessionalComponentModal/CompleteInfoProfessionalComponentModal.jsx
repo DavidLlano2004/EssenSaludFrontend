@@ -51,6 +51,9 @@ export const CompleteInfoProfessionalComponentModal = ({
       license_number: dataForm?.license_number,
       centerId: dataForm?.centerId?.value,
     };
+    console.log(newData, "newData");
+    debugger
+    
     createProfessionalFunction({
       dataForm: newData,
       onStart: onStartFunctionCreateProfessional,
@@ -61,6 +64,11 @@ export const CompleteInfoProfessionalComponentModal = ({
   useEffect(() => {
     getAllHealthyCentersFunction();
   }, []);
+
+  console.log(userId, "userId");
+  console.log(dataForm, "dataForm");
+  
+  
 
   return (
     <div className="mt-3">

@@ -12,6 +12,8 @@ export const useAuthInitializer = () => {
     async function checkLogin() {
       try {
         const res = await verifyTokenRequest();
+        console.log(res);
+        
 
         if (!res.data?.response) {
           setIsLoading(false);

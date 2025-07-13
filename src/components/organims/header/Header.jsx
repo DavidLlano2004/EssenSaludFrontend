@@ -13,7 +13,7 @@ export const Header = ({ setViewMenuSm }) => {
     [paths.HOME]: "Usuarios",
     [paths.HEALTHYCENTER]: "Centros de salud",
     [paths.HEALTHYPLANS]: "Planes de salud",
-    [paths.APPOINTMENTS]: "Citas",
+    [paths.APPOINTMENTSPROFESSIONAL]: "Citas",
   };
   const text = routesText[pathname] || "Sección no reconocida";
   return (

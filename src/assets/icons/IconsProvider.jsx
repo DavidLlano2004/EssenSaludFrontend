@@ -32,6 +32,11 @@ import IconDocumentType from "./icon_document_type.svg";
 import IconDateAppointmentBlue from "./icon_date_appointment_blue.svg";
 import IconDateAppointmentGrayLight from "./icon_date_appointment_gray_light.svg";
 import IconDoctorGrayDark from "./icon_doctor_gray_dark.svg";
+import IconSearchGray from "./icon_search_gray.svg";
+import IconOpenInfoPacient from "./icon_open_info_pacient.svg";
+import IconDefaultUser from "./icon_default_user.jpg";
+import IconCheckWhite from "./icon_check_white.svg";
+import IconDeleteWhite from "./icon_delete_white.svg";
 
 export const Icons = {
   IconEmail,
@@ -67,5 +72,10 @@ export const Icons = {
   IconDocumentType,
   IconDateAppointmentBlue,
   IconDateAppointmentGrayLight,
-  IconDoctorGrayDark
+  IconDoctorGrayDark,
+  IconSearchGray,
+  IconOpenInfoPacient,
+  IconDefaultUser,
+  IconCheckWhite,
+  IconDeleteWhite
 };

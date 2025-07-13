@@ -1,8 +1,14 @@
-import { createAffiliateAction } from "../redux/actions/affiliatesAction/affiliates.action";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createAffiliateAction,
+  getInfoAffiliateAction,
+} from "../redux/actions/affiliatesAction/affiliates.action";
 import { useUsers } from "./useUsers.hooks";
 
 export const useAffiliate = () => {
   const { updateUserFunction } = useUsers();
+  const { userId } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const createAffiliateFunction = async ({
     dataForm,
@@ -42,7 +48,22 @@ export const useAffiliate = () => {
     }
   };
 
+  const getOneAffiliateFunction = async () => {
+    try {
+      const data = await dispatch(getInfoAffiliateAction(userId));
+      if (data?.error) {
+        console.error("Error al obtener el afiliado:", data?.error);
+        return { state: 500, error: data?.error };
+      }
+      return { state: 200 };
+    } catch (error) {
+      console.error("Error inesperado:", error);
+      return { state: 500, error: error };
+    }
+  };
+
   return {
     createAffiliateFunction,
+    getOneAffiliateFunction,
   };
 };

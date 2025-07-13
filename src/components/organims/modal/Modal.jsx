@@ -39,9 +39,9 @@ export const Modal = ({
                   {closeModal && (
                     <button
                       onClick={closeModal}
-                      className="w-10 h-10 hover:bg-[#f0f0f0] transition-all ease-in duration-200 border-gray-light-custom border rounded-full grid place-items-center cursor-pointer"
+                      className="w-9 h-9 hover:bg-[#f0f0f0] transition-all ease-in duration-200 border-gray-light-custom border rounded-full grid place-items-center cursor-pointer"
                     >
-                      <img className="w-[12px]" src={IconClose} alt="" />
+                      <img className="w-[10px]" src={IconClose} alt="" />
                     </button>
                   )}
                 </div>

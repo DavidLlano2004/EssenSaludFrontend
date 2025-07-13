@@ -43,8 +43,8 @@ export const Aside = () => {
       name: "Citas",
       iconGray: IconDateAppointmentGrayLight,
       iconBlue: IconDateAppointmentBlue,
-      path: paths.APPOINTMENTS,
-      handleClick: () => navigate(paths.APPOINTMENTS),
+      path: paths.APPOINTMENTSPROFESSIONAL,
+      handleClick: () => navigate(paths.APPOINTMENTSPROFESSIONAL),
     },
     {
       id: 4,
@@ -60,13 +60,13 @@ export const Aside = () => {
     [paths.HOME]: [paths.HOME],
     [paths.HEALTHYCENTER]: [paths.HEALTHYCENTER],
     [paths.HEALTHYPLANS]: [paths.HEALTHYPLANS],
-    [paths.APPOINTMENTS]: [paths.APPOINTMENTS],
+    [paths.APPOINTMENTSPROFESSIONAL]: [paths.APPOINTMENTSPROFESSIONAL],
   };
 
   const allowedRoutesByRole = {
     Administrativo: [paths.HOME, paths.HEALTHYCENTER],
-    Afiliado: [paths.APPOINTMENTS, paths.HEALTHYPLANS],
-    Profesional: [paths.HEALTHYPLANS],
+    Afiliado: [paths.HEALTHYPLANS],
+    Profesional: [paths.APPOINTMENTSPROFESSIONAL],
   };
 
   const allowedRoutes = allowedRoutesByRole[rol] || [];

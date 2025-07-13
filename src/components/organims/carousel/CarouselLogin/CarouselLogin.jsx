@@ -17,15 +17,15 @@ export const CarouselLogin = () => {
       <Swiper
         pagination={true}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiperLogin"
       >
-        <SwiperSlide>
+        <SwiperSlide className="swiper-slide-login">
           <img src={ImageCarouselLogin1} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="swiper-slide-login">
           <img src={ImageCarouselLogin2} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="swiper-slide-login">
           <img src={ImageCarouselLogin3} alt="" />
         </SwiperSlide>
       </Swiper>

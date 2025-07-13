@@ -3,6 +3,6 @@ export const paths = {
   TEMPLATEAPP: "/app",
   HOME: "/app/home",
   HEALTHYCENTER: "/app/healthy-center",
-  APPOINTMENTS: "/app/appointments",
+  APPOINTMENTSPROFESSIONAL: "/app/appointments-professional",
   HEALTHYPLANS: "/app/healthy-plans",
 };
