@@ -17,7 +17,13 @@ export const AppointmentsProfessional = () => {
     setIsOpenModalCompleteInfoAppointment,
   ] = useState(false);
   return (
-    <article className="  flex-1 p-4 flex flex-col xl:overflow-hidden overflow-y-auto">
+    <motion.article
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -20, opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="  flex-1 p-4 flex flex-col xl:overflow-hidden overflow-y-auto"
+    >
       <section className=" flex xl:flex-row flex-col justify-between h-auto xl:items-end items-start">
         <div className="xl:flex-1  xl:order-1 order-2 w-full xl:mt-0 mt-8 ">
           <Search />
@@ -53,6 +59,6 @@ export const AppointmentsProfessional = () => {
           actionBtnCancel={() => setIsOpenModalCompleteInfoAppointment(false)}
         />
       </Modal>
-    </article>
+    </motion.article>
   );
 };

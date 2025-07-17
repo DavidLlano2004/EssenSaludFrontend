@@ -25,9 +25,9 @@ export const TemplateAuth = () => {
   }
 
   return (
-    <div className="w-full h-[100dvh] grid lg:grid-cols-2 grid-cols-1">
+    <div className="w-full h-[100dvh] grid lg:grid-cols-2 grid-cols-1 overflow-hidden">
       <Toaster position="bottom-left" reverseOrder={true} />
-      <article className=" flex flex-col">
+      <article className=" flex flex-col overflow-y-auto py-4">
         <section className=" w-full h-[100px] flex justify-center items-center gap-2">
           <div className="w-8 h-8">
             <img className="w-full h-full" src={IconWeb} alt="" />
@@ -81,7 +81,7 @@ export const TemplateAuth = () => {
           </div>
         </section>
       </article>
-      <article className=" bg-primary lg:flex hidden">
+      <article className="  lg:flex hidden">
         <CarouselLogin />
       </article>
     </div>

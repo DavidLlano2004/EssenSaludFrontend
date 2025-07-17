@@ -81,10 +81,12 @@ export const CompleteInfoAffiliateComponentModal = ({
             control={control}
             name="document_type"
             staticData={documentTypes}
-            rules={{ required: "El tipo de usuario es requerido" }}
+            rules={{ required: "El tipo de documento es requerido" }}
             placeholder="Tipo de documento"
             keyOption="label"
             styleLabel="xl:text-base text-sm flex justify-between"
+            iconSelect={IconDocumentType}
+            iconSelectStyle="w-5 h-5"
           />
           <InputSimple
             errors={errors}

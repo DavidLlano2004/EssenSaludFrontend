@@ -7,7 +7,7 @@ import { ButtonTypeA } from "../../../molecules/buttons/ButtonTypeA";
 import { useSelector } from "react-redux";
 import { useHealthyCenter } from "../../../../hooks/useHealthyCenter.hooks";
 import { useProfessional } from "../../../../hooks/useProfessional.hooks";
-const { IconDocumentType, IconDoctorGrayDark } = Icons;
+const { IconDocumentType, IconDoctorGrayDark ,IconHealthyCentersGrayDark } = Icons;
 
 export const CompleteInfoProfessionalComponentModal = ({
   setValidateInfoProfesional,
@@ -51,9 +51,7 @@ export const CompleteInfoProfessionalComponentModal = ({
       license_number: dataForm?.license_number,
       centerId: dataForm?.centerId?.value,
     };
-    console.log(newData, "newData");
-    debugger
-    
+
     createProfessionalFunction({
       dataForm: newData,
       onStart: onStartFunctionCreateProfessional,
@@ -64,11 +62,6 @@ export const CompleteInfoProfessionalComponentModal = ({
   useEffect(() => {
     getAllHealthyCentersFunction();
   }, []);
-
-  console.log(userId, "userId");
-  console.log(dataForm, "dataForm");
-  
-  
 
   return (
     <div className="mt-3">
@@ -111,6 +104,8 @@ export const CompleteInfoProfessionalComponentModal = ({
             styleLabel="xl:text-base text-sm flex justify-between"
             keyLabel={"name"}
             keyValue={"id"}
+            iconSelect={IconHealthyCentersGrayDark}
+            iconSelectStyle={"w-5 h-5"}
           />
         </div>
         <div className="mt-6">

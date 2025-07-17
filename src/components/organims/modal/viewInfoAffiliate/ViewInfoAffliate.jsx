@@ -9,6 +9,8 @@ export const ViewInfoAffliate = ({
   setViewMenuSm,
   actionCancel,
   actionComplete,
+  affiliate = false,
+  buttonCancel = true,
 }) => {
   const variants = {
     enter: () => ({
@@ -59,7 +61,7 @@ export const ViewInfoAffliate = ({
                   </div>
                   <div>
                     <h1 className="text-base font-semibold text-black-custom">
-                      Nombre
+                      {affiliate ? "Especialista" : "Paciente"}
                     </h1>
                     <p className="text-sm text-black-custom">
                       Julian David Rodrigue...
@@ -95,79 +97,110 @@ export const ViewInfoAffliate = ({
                     <h1 className="font-semibold">Hora</h1>
                     <p className="font-light">02:30 pm</p>
                   </div>
-                  <div className="col-span-2">
-                    <h1 className="font-semibold">Correo</h1>
-                    <p className="font-light">juli.matias.2004@gmail.com</p>
-                  </div>
-                  <div>
-                    <h1 className="font-semibold">Cc</h1>
-                    <p className="font-light">1107974183</p>
-                  </div>
-                  <div>
-                    <h1 className="font-semibold">F. Nacimiento</h1>
-                    <p className="font-light">17/01/2004</p>
-                  </div>
-                  <div className="col-span-2">
-                    <h1 className="font-semibold">Dirección</h1>
-                    <p className="font-light">Carrera 8c # 57e - 36</p>
-                  </div>
-                  <div className="">
-                    <h1 className="font-semibold">Teléfono</h1>
-                    <p className="font-light">3122480775</p>
-                  </div>
-                  <div className="">
-                    <h1 className="font-semibold">Plan de salud</h1>
-                    <p className="font-light">Básico</p>
-                  </div>
                 </div>
                 <div className="border-b-2 border-t-2 py-4 mt-8 border-gray-light-custom">
                   <h1 className="text-lg text-black-custom font-semibold ">
-                    Historia clínica
+                    Información del {affiliate ? "especialista" : "paciente"}
                   </h1>
                 </div>
-                <div className="mt-8 grid-cols-2 grid gap-4">
-                  <div className="col-span-2">
-                    <h1 className="font-semibold">Síntomas</h1>
-                    <p className="font-light">Sin información</p>
+
+                {affiliate ? (
+                  <div className="mt-8 grid-cols-2 grid gap-4">
+                    <div>
+                      <h1 className="font-semibold">N° de licencia</h1>
+                      <p className="font-light">587864390</p>
+                    </div>
+                    <div>
+                      <h1 className="font-semibold">Especialidad</h1>
+                      <p className="font-light">Médico cirujano</p>
+                    </div>
                   </div>
-                  <div className="col-span-2">
-                    <h1 className="font-semibold">Tratamiento</h1>
-                    <p className="font-light">Sin información</p>
+                ) : (
+                  <div className="mt-8 grid-cols-2 grid gap-4">
+                    <div className="col-span-2">
+                      <h1 className="font-semibold">Correo</h1>
+                      <p className="font-light">juli.matias.2004@gmail.com</p>
+                    </div>
+                    <div>
+                      <h1 className="font-semibold">Cc</h1>
+                      <p className="font-light">1107974183</p>
+                    </div>
+                    <div>
+                      <h1 className="font-semibold">F. Nacimiento</h1>
+                      <p className="font-light">17/01/2004</p>
+                    </div>
+                    <div className="col-span-2">
+                      <h1 className="font-semibold">Dirección</h1>
+                      <p className="font-light">Carrera 8c # 57e - 36</p>
+                    </div>
+                    <div className="">
+                      <h1 className="font-semibold">Teléfono</h1>
+                      <p className="font-light">3122480775</p>
+                    </div>
+                    <div className="">
+                      <h1 className="font-semibold">Plan de salud</h1>
+                      <p className="font-light">Básico</p>
+                    </div>
                   </div>
-                  <div className="col-span-2">
-                    <h1 className="font-semibold">Diagnóstico</h1>
-                    <p className="font-light">Sin información</p>
-                  </div>
+                )}
+
+                {!affiliate && (
+                  <>
+                    <div className="border-b-2 border-t-2 py-4 mt-8 border-gray-light-custom">
+                      <h1 className="text-lg text-black-custom font-semibold ">
+                        Historia clínica
+                      </h1>
+                    </div>
+
+                    <div className="mt-8 grid-cols-2 grid gap-4">
+                      <div className="col-span-2">
+                        <h1 className="font-semibold">Síntomas</h1>
+                        <p className="font-light">Sin información</p>
+                      </div>
+                      <div className="col-span-2">
+                        <h1 className="font-semibold">Tratamiento</h1>
+                        <p className="font-light">Sin información</p>
+                      </div>
+                      <div className="col-span-2">
+                        <h1 className="font-semibold">Diagnóstico</h1>
+                        <p className="font-light">Sin información</p>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+              {buttonCancel && (
+                <div className=" border-t border-gray-light-custom flex px-2 py-4 gap-5">
+                  <ButtonTypeA
+                    action={actionCancel}
+                    text="Cancelar"
+                    bgColor="bg-red-custom"
+                    txColor="text-white"
+                    bdWidth="0px"
+                    bgHvColor="hover:bg-red-custom-hover"
+                    width="w-full"
+                    alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
+                    paddingButton="0 20px"
+                    heigthButton={"h-[45px]"}
+                    imgStyles={"w-[18px]"}
+                  />
+                  {!affiliate && (
+                    <ButtonTypeA
+                      action={actionComplete}
+                      text="Finalizar"
+                      bgColor="bg-secondary"
+                      txColor="text-white"
+                      bdWidth="0px"
+                      bgHvColor="hover:bg-secondary-hover"
+                      width="w-full"
+                      alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
+                      paddingButton="0 20px"
+                      heigthButton={"h-[45px]"}
+                      imgStyles={"w-[18px]"}
+                    />
+                  )}
                 </div>
-              </div>
-              <div className=" border-t border-gray-light-custom flex px-2 py-4 gap-5">
-                <ButtonTypeA
-                  action={actionCancel}
-                  text="Cancelar"
-                  bgColor="bg-red-custom"
-                  txColor="text-white"
-                  bdWidth="0px"
-                  bgHvColor="hover:bg-red-custom-hover"
-                  width="w-full"
-                  alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
-                  paddingButton="0 20px"
-                  heigthButton={"h-[45px]"}
-                  imgStyles={"w-[18px]"}
-                />
-                <ButtonTypeA
-                  action={actionComplete}
-                  text="Finalizar"
-                  bgColor="bg-secondary"
-                  txColor="text-white"
-                  bdWidth="0px"
-                  bgHvColor="hover:bg-secondary-hover"
-                  width="w-full"
-                  alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
-                  paddingButton="0 20px"
-                  heigthButton={"h-[45px]"}
-                  imgStyles={"w-[18px]"}
-                />
-              </div>
+              )}
             </motion.div>
           </motion.div>
         </>

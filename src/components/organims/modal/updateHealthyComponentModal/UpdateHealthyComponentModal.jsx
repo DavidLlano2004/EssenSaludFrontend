@@ -65,7 +65,7 @@ export const UpdateHealthyComponentModal = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
-      <div className="grid grid-cols-2 gap-6">
+      <div className=" grid sm:grid-cols-2 grid-cols-1 gap-6">
         <InputSimple
           errors={errors}
           inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
@@ -114,7 +114,7 @@ export const UpdateHealthyComponentModal = ({
           placeholder="Ciudad"
           defaultValue={healthyCenterdata?.city}
         />
-        <div className="col-span-2">
+        <div className="sm:col-span-2 col-span-1">
           <ButtonTypeA
             submitBtn={true}
             text={"Editar centro"}

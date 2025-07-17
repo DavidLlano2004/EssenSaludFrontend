@@ -14,13 +14,14 @@ export const loginAppAction = async (user) => {
   //   };
 };
 export const registerAppAction = async (dataForm) => {
-  const { email, name, birthday, password , rol } = dataForm;
+  const { email, name, birthday, password , rol , gender } = dataForm;
   const newData = {
     email,
     name,
     birthday,
     password,
     rol,
+    gender
   };
   try {
     const response = await axiosClientAuth.post("/register", newData);

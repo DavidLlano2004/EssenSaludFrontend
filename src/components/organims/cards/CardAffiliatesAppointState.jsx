@@ -5,7 +5,10 @@ const CardAffiliatesAppointState = ({
   textState,
   numberAppoints,
   stateAppoint = "programada",
-  actionCard
+  actionCard,
+  titleCard,
+  affiliate,
+  dataByCards = [],
 }) => {
   const colorCard = {
     programada: {
@@ -34,16 +37,16 @@ const CardAffiliatesAppointState = ({
         </div>
       </div>
 
-      <div className=" mt-3 lg:flex-[590px] h-[600px] overflow-y-auto flex flex-col gap-3">
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
-        <CardAffiliateAppointment actionCard={actionCard} />
+      <div className=" mt-3 lg:flex-[590px] max-h-[600px] h-auto overflow-y-auto flex flex-col gap-3">
+        {dataByCards?.map((data) => (
+          <CardAffiliateAppointment
+            key={data?.id}
+            actionCard={actionCard}
+            titleCard={titleCard}
+            affiliate={affiliate}
+            dataCard={data}
+          />
+        ))}
       </div>
     </div>
   );

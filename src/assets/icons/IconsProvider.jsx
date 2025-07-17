@@ -31,12 +31,20 @@ import IconCheckGreen from "./icon_check_green.svg";
 import IconDocumentType from "./icon_document_type.svg";
 import IconDateAppointmentBlue from "./icon_date_appointment_blue.svg";
 import IconDateAppointmentGrayLight from "./icon_date_appointment_gray_light.svg";
+import IconDateAppointmentWhite from "./icon_date_appointment_white.svg";
 import IconDoctorGrayDark from "./icon_doctor_gray_dark.svg";
 import IconSearchGray from "./icon_search_gray.svg";
 import IconOpenInfoPacient from "./icon_open_info_pacient.svg";
 import IconDefaultUser from "./icon_default_user.jpg";
 import IconCheckWhite from "./icon_check_white.svg";
 import IconDeleteWhite from "./icon_delete_white.svg";
+import IconProfileGray from "./icon_profile_gray.svg";
+import IconArrowDownBlackCustom from "./icon_arrow_down_black_custom.svg";
+import IconGenderGray from "./icon_gender_gray.svg";
+import IconTypeUserGray from "./icon_type_user_gray.svg";
+import IconInfoHelpWhite from "./icon_info_help_white.svg";
+import IconCalendarGray from "./icon_calendar_gray.svg";
+import IconCalendarTimeGray from "./icon_calendar_time_gray.svg";
 
 export const Icons = {
   IconEmail,
@@ -77,5 +85,13 @@ export const Icons = {
   IconOpenInfoPacient,
   IconDefaultUser,
   IconCheckWhite,
-  IconDeleteWhite
+  IconDeleteWhite,
+  IconProfileGray,
+  IconArrowDownBlackCustom,
+  IconGenderGray,
+  IconTypeUserGray,
+  IconInfoHelpWhite,
+  IconDateAppointmentWhite,
+  IconCalendarGray,
+  IconCalendarTimeGray,
 };

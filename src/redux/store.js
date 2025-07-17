@@ -6,11 +6,21 @@ import userReducer from "./slices/userSlice/user.slice.js";
 import healthyCenterReducer from "./slices/healthyCenterSlice/healthyCenter.slice.js";
 import healthyPlanReducer from "./slices/healthyPlansSlice/healthyPlans.slice.js";
 import affiliatesReducer from "./slices/affiliatesSlice/Affiliate.Slice.js";
+import professionalsReducer from "./slices/professinalSlice/Professional.Slice.js";
+import appointmentReducer from "./slices/appointmentSlice/Appointment.slice.js";
+
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "user", "healthyCenter", "affiliates"],
+  whitelist: [
+    "auth",
+    "user",
+    "healthyCenter",
+    "affiliates",
+    "professionals",
+    "appointment",
+  ],
 };
 
 export const appReducer = combineReducers({
@@ -19,6 +29,8 @@ export const appReducer = combineReducers({
   healthyCenter: healthyCenterReducer,
   healthyPlan: healthyPlanReducer,
   affiliates: affiliatesReducer,
+  professionals: professionalsReducer,
+  appointment: appointmentReducer,
 });
 
 const rootReducer = (state, action) => {

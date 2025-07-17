@@ -44,9 +44,9 @@ export const InputController = ({
               data-testid="inputController"
               {...field}
               {...inputProps}
-              className={`${styleInput}   ${
-                disabled && "bg-zinc-200"
-              } ${error && "border-red-custom"}`}
+              className={`${styleInput}   ${disabled && "bg-zinc-200"} ${
+                error && "border-red-custom"
+              }`}
               placeholder={placeholder}
               type={showPassword ? "text" : type}
               disabled={disabled}

@@ -12,6 +12,7 @@ import { useHealthyCenter } from "../../../hooks/useHealthyCenter.hooks";
 import { useSelector } from "react-redux";
 import { ValidateModal } from "../../../components/organims/modal/validateModal/ValidateModal";
 import { UpdateHealthyComponentModal } from "../../../components/organims/modal/updateHealthyComponentModal/UpdateHealthyComponentModal";
+import { Search } from "../../../components/molecules/inputs/Search";
 const { IconAddHealthyCenterWhite } = Icons;
 
 export const HealthyCenters = () => {
@@ -95,22 +96,25 @@ export const HealthyCenters = () => {
       className="sm:p-4 p-3 flex flex-col flex-1 overflow-hidden"
     >
       <Toaster position="bottom-right" reverseOrder={true} />
-      <div className="flex flex-row justify-end">
-        <ButtonTypeA
-          action={() => setModalCreateHealthyCenter(true)}
-          submitBtn={false}
-          text="Crear centro de salud"
-          bgColor="bg-primary"
-          txColor="text-white"
-          bdWidth="0px"
-          bgHvColor="hover:bg-primary-hover"
-          width="sm:w-[250px] w-full"
-          alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
-          paddingButton="0 20px"
-          heigthButton={" h-[40px]"}
-          img={IconAddHealthyCenterWhite}
-          imgStyles={"w-[18px]"}
-        />
+      <div className="flex flex-row items-end gap-4">
+        <Search width="w-full" textSearch="Buscar centros" />
+        <div>
+          <ButtonTypeA
+            action={() => setModalCreateHealthyCenter(true)}
+            submitBtn={false}
+            text="Crear centro de salud"
+            bgColor="bg-primary"
+            txColor="text-white"
+            bdWidth="0px"
+            bgHvColor="hover:bg-primary-hover"
+            width="sm:w-[250px] w-full"
+            alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
+            paddingButton="0 20px"
+            heigthButton={" h-[40px]"}
+            img={IconAddHealthyCenterWhite}
+            imgStyles={"w-[18px]"}
+          />
+        </div>
       </div>
       <div className="flex-1 w-full mt-4 overflow-y-auto ">
         {loading ? (
@@ -132,8 +136,9 @@ export const HealthyCenters = () => {
       <Modal
         isOpen={modalCreateHealthyCenter}
         closeModal={() => setModalCreateHealthyCenter(false)}
-        styleHW="w-[450px]"
+        styleHW="w-[500px]"
         titleModal={"Crear centro"}
+        itemsStart={"items-center"}
       >
         <CreateHealthyComponentModal
           setFlagHelpHealthyCenter={setFlagHelpHealthyCenter}
@@ -146,6 +151,7 @@ export const HealthyCenters = () => {
         isOpen={isModalDeleteHealthyCenter}
         closeModal={() => closeModalDeleteHealthyCenter()}
         styleHW="w-[400px]"
+        itemsStart="items-center"
       >
         <ValidateModal
           loadingButton={loadingButtonDeleteHealthyCenter}
@@ -167,8 +173,9 @@ export const HealthyCenters = () => {
       <Modal
         isOpen={isModalUpdateHealthyCenter}
         closeModal={() => closeModalUpdateHealthyCenter()}
-        styleHW="w-[400px]"
+        styleHW="w-[500px]"
         titleModal={"Editar centro"}
+        itemsStart="items-center"
       >
         <UpdateHealthyComponentModal
           healthyCenterdata={healthyCenterdata}

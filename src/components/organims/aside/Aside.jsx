@@ -54,6 +54,22 @@ export const Aside = () => {
       path: paths.HEALTHYPLANS,
       handleClick: () => navigate(paths.HEALTHYPLANS),
     },
+    {
+      id: 5,
+      name: "Citas",
+      iconGray: IconDateAppointmentGrayLight,
+      iconBlue: IconDateAppointmentBlue,
+      path: paths.APPOINTMENTSAFFILIATES,
+      handleClick: () => navigate(paths.APPOINTMENTSAFFILIATES),
+    },
+    {
+      id: 6,
+      name: "C. Citas",
+      iconGray: IconDateAppointmentGrayLight,
+      iconBlue: IconDateAppointmentBlue,
+      path: paths.APPOINTMENTSADMIN,
+      handleClick: () => navigate(paths.APPOINTMENTSADMIN),
+    },
   ];
 
   const relatedRoutes = {
@@ -61,11 +77,13 @@ export const Aside = () => {
     [paths.HEALTHYCENTER]: [paths.HEALTHYCENTER],
     [paths.HEALTHYPLANS]: [paths.HEALTHYPLANS],
     [paths.APPOINTMENTSPROFESSIONAL]: [paths.APPOINTMENTSPROFESSIONAL],
+    [paths.APPOINTMENTSAFFILIATES]: [paths.APPOINTMENTSAFFILIATES],
+    [paths.APPOINTMENTSADMIN]: [paths.APPOINTMENTSADMIN],
   };
 
   const allowedRoutesByRole = {
-    Administrativo: [paths.HOME, paths.HEALTHYCENTER],
-    Afiliado: [paths.HEALTHYPLANS],
+    Administrativo: [paths.HOME, paths.HEALTHYCENTER, paths.APPOINTMENTSADMIN],
+    Afiliado: [paths.HEALTHYPLANS, paths.APPOINTMENTSAFFILIATES],
     Profesional: [paths.APPOINTMENTSPROFESSIONAL],
   };
 

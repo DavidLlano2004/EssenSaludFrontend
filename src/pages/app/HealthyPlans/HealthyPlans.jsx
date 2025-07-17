@@ -1,30 +1,27 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { ButtonTypeA } from "../../../components/molecules/buttons/ButtonTypeA";
-import { Icons } from "../../../assets/icons/IconsProvider";
 import { CardHealthyPlan } from "../../../components/organims/cards/CardHealthyPlan";
 import { useHealthyPlan } from "../../../hooks/useHealthyPlans.hooks";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { LoaderComponent } from "../../../components/molecules/loader/LoaderComponent";
 import { ValidateModal } from "../../../components/organims/modal/validateModal/ValidateModal";
 import { Modal } from "../../../components/organims/modal/Modal";
-import { getInfoAffiliateAction } from "../../../redux/actions/affiliatesAction/affiliates.action";
 import { useAffiliate } from "../../../hooks/useAffiliates.hooks";
-const { IconCheckGreen } = Icons;
 
 export const HealthyPlans = () => {
-  const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(true);
   const [indexButtonChooseen, setIndexButtonChooseen] = useState(null);
   const [planChoosee, setPlanChoosee] = useState(null);
   const [openModalConfirm, setOpenModalConfirm] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [flagInfoPlan, setFlagInfoPlan] = useState(false);
 
   const { healthyPlans } = useSelector((state) => state.healthyPlan);
   const { affiliate } = useSelector((state) => state.affiliates);
+  const { userId } = useSelector((state) => state.auth);
 
   const { getAllHealthyPlansFunction } = useHealthyPlan();
-  const { getOneAffiliateFunction } = useAffiliate();
+  const { getOneAffiliateFunction, updateAffiliateFunction } = useAffiliate();
 
   const openModalConfirmFunction = (i) => {
     setPlanChoosee(i);
@@ -36,16 +33,34 @@ export const HealthyPlans = () => {
     setOpenModalConfirm(false);
   };
 
-  const choosePlanFunction = () => {
+  const onStartFunctionUpdateAffiliate = () => {
+    setButtonLoading(true);
+  };
+
+  const onSuccessFunctionUpdateAffiliate = () => {
     setIndexButtonChooseen(planChoosee);
     setOpenModalConfirm(false);
+    setFlagInfoPlan((prev) => !prev);
+    setButtonLoading(false);
+  };
+
+  const onSubmit = () => {
+    const newData = {
+      healthyPlanId: planChoosee,
+    };
+    updateAffiliateFunction({
+      idAffiliate: userId,
+      dataForm: newData,
+      onStart: onStartFunctionUpdateAffiliate,
+      onSuccess: onSuccessFunctionUpdateAffiliate,
+    });
   };
 
   useEffect(() => {
     const loadData = async () => {
       try {
         await Promise.all([
-          getOneAffiliateFunction(),
+          getOneAffiliateFunction(userId),
           getAllHealthyPlansFunction(),
         ]);
       } catch (error) {
@@ -56,15 +71,18 @@ export const HealthyPlans = () => {
     };
 
     loadData();
-  }, []);
+  }, [flagInfoPlan]);
 
   useEffect(() => {
-    if (affiliate?.healthyPlanId != null) {
-      set;
+    if (healthyPlans?.length != 0) {
+      if (affiliate?.healthyPlanId != null) {
+        const dataCompare = healthyPlans?.find(
+          (data) => data?.id === affiliate?.healthyPlanId
+        );
+        setIndexButtonChooseen(dataCompare?.id);
+      }
     }
-  }, []);
-
-  console.log(affiliate);
+  }, [healthyPlans]);
 
   return (
     <motion.div
@@ -110,13 +128,14 @@ export const HealthyPlans = () => {
         styleHW="w-[400px]"
       >
         <ValidateModal
-          actionCancel={() => choosePlanFunction()}
+          actionCancel={() => onSubmit()}
           actionDelete={() => closeModalConfirmFunction()}
           title={"¿Estás seguro de escoger el plan?"}
           subtitle={"En cualquier momento puedes cambiar de plan"}
           textFirstButton="Escoger"
           textSecondButton="Cancelar"
           oderButton="last"
+          loadingButton={buttonLoading}
         />
       </Modal>
     </motion.div>

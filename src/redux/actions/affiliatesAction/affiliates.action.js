@@ -1,5 +1,8 @@
 import { axiosClientAuth } from "../../../config/AxiosClient";
-import { getOneAffiliateSlice } from "../../slices/affiliatesSlice/Affiliate.Slice";
+import {
+  getAllAffiliatesSlice,
+  getOneAffiliateSlice,
+} from "../../slices/affiliatesSlice/Affiliate.Slice";
 
 export const createAffiliateAction = async (dataForm) => {
   const newData = {
@@ -22,10 +25,37 @@ export const getInfoAffiliateAction = (idAffiliate) => {
       const { data } = await axiosClientAuth.get(`/affiliate/${idAffiliate}`);
 
       dispatch(getOneAffiliateSlice(data.response));
-      return data
+      return data;
     } catch (error) {
       console.error(error);
       throw new Error("Error insperado");
     }
   };
+};
+
+export const getAllAffiliatesAction = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axiosClientAuth.get(`/affiliates`);
+
+      dispatch(getAllAffiliatesSlice(data.response));
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error insperado");
+    }
+  };
+};
+
+export const updateAffiliateAction = async (dataForm, idAffiliate) => {
+  try {
+    const { data } = await axiosClientAuth.put(
+      `/affiliate/${idAffiliate}`,
+      dataForm
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error insperado");
+  }
 };

@@ -1,0 +1,5 @@
+/* Estilos para el fondo personalizado */
+.tippy-box.custom-tooltip {
+    background-color: #005C99;
+    color: #fff;
+}

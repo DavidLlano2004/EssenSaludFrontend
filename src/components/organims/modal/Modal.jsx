@@ -10,6 +10,7 @@ export const Modal = ({
   bgColorModal = "bg-white",
   closeModal,
   titleModal,
+  itemsStart = "items-start"
 }) => {
   return (
     <>
@@ -20,7 +21,7 @@ export const Modal = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className={`fixed inset-0 z-50 w-full shadow-md  rounded-md h-[100dvh] flex items-center justify-center bg-[#202020]/30 backdrop-blur-[1px] font-Sora`}
+            className={`fixed inset-0 z-50 w-full shadow-md h-[100dvh] overflow-y-auto flex sm:items-center ${itemsStart} py-3 justify-center bg-[#202020]/30 backdrop-blur-[1px]`}
           >
             <motion.div
               initial={{ y: -900 }}
@@ -31,7 +32,7 @@ export const Modal = ({
             >
               <div className="flex justify-end">
                 <div className="flex-1 flex items-center ">
-                  <h1 className=" font-bold text-black-custom text-xl">
+                  <h1 className=" font-bold text-black-custom sm:text-xl text-base">
                     {titleModal}
                   </h1>
                 </div>

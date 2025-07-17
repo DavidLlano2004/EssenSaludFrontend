@@ -2,17 +2,13 @@ import React from "react";
 import { InputSimple } from "../../../molecules/inputs/InputSimple";
 import { useForm } from "react-hook-form";
 import { Icons } from "../../../../assets/icons/IconsProvider";
-import { InputController } from "../../../molecules/inputs/InputController/InputController";
 import { useState } from "react";
-import { RulesPassword } from "../../../molecules/rulesPassword/RulesPassword";
-import { arrayRulesPassword } from "../../../../helpers/ValidationPassword";
 import { ButtonTypeA } from "../../../molecules/buttons/ButtonTypeA";
-import { registerAppAction } from "../../../../redux/actions/authAction/auth.action";
 import { useIsAdult } from "../../../../hooks/useIsAdult";
 import { CustomAlert } from "../../../molecules/customAlert/CustomAlert";
 import { CustomSelect } from "../../../molecules/select/SelectSimple";
 import { useUsers } from "../../../../hooks/useUsers.hooks";
-const { IconEmail, IconUser, IconDateInput, IconPasswordInput, IconRolesGray } =
+const { IconEmail, IconUser, IconDateInput, IconTypeUserGray, IconGenderGray } =
   Icons;
 
 export const UpdateComponentModal = ({
@@ -57,6 +53,21 @@ export const UpdateComponentModal = ({
     },
   ];
 
+  const genderUser = [
+    {
+      value: 1,
+      label: "Masculino",
+    },
+    {
+      value: 2,
+      label: "Femenino",
+    },
+    {
+      value: 3,
+      label: "Otro",
+    },
+  ];
+
   const validateRolId = () => {
     let idOption = 1;
     switch (userData?.rol) {
@@ -64,6 +75,24 @@ export const UpdateComponentModal = ({
         idOption = idOption;
         break;
       case "Profesional":
+        idOption = 2;
+        break;
+
+      default:
+        idOption = 3;
+        break;
+    }
+
+    return idOption;
+  };
+
+  const validateGenderId = () => {
+    let idOption = 1;
+    switch (userData?.gender) {
+      case "Masculino":
+        idOption = idOption;
+        break;
+      case "Femenino":
         idOption = 2;
         break;
 
@@ -134,8 +163,26 @@ export const UpdateComponentModal = ({
               label: userData?.rol,
               value: validateRolId(),
             }}
+            iconSelect={IconTypeUserGray}
+            iconSelectStyle={"w-5 h-5"}
           />
         )}
+
+        <CustomSelect
+          control={control}
+          name="gender"
+          staticData={genderUser}
+          rules={{ required: "El género es requerido" }}
+          placeholder="Género"
+          keyOption="label"
+          styleLabel="xl:text-base text-sm flex justify-between"
+          iconSelect={IconGenderGray}
+          iconSelectStyle="w-6 h-6"
+          defaultValue={{
+              label: userData?.gender,
+              value: validateGenderId(),
+            }}
+        />
 
         <InputSimple
           errors={errors}

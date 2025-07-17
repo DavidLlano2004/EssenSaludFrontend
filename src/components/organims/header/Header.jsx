@@ -1,41 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icons } from "../../../assets/icons/IconsProvider";
 import { paths } from "../../../routes/paths";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth.hooks";
-const { IconMenuHamburguesa } = Icons;
+import { Images } from "../../../assets/images/ImagesProvider";
+import { AnimatePresence } from "framer-motion";
+import { MenuFloat } from "../../molecules/menuFloat/MenuFloat";
+import { OptionsProfile } from "../modal/optionsProfile/OptionsProfile";
+import { useSelector } from "react-redux";
+import { truncateText } from "../../../helpers/truncateText";
+const { IconMenuHamburguesa, IconArrowDownBlackCustom, IconUser } = Icons;
+const { ImgAvatarMen, ImgAvatarWoman } = Images;
 
 export const Header = ({ setViewMenuSm }) => {
+  const { gender, name , rol , email } = useSelector((state) => state.auth);
+
+  const [activeMenu, setActiveMenu] = useState(false);
+  const [menuOptionsProfile, setMenuOptionsProfile] = useState(false);
   const { fetchSignOut } = useAuth();
 
-  const { pathname } = useLocation();
-  const routesText = {
-    [paths.HOME]: "Usuarios",
-    [paths.HEALTHYCENTER]: "Centros de salud",
-    [paths.HEALTHYPLANS]: "Planes de salud",
-    [paths.APPOINTMENTSPROFESSIONAL]: "Citas",
-  };
-  const text = routesText[pathname] || "Sección no reconocida";
+  const optionsAccount = [
+    {
+      id: 1,
+      title: "Perfil",
+      img: IconUser,
+      handleClick: () => {
+        navigate(paths.ORGANIZATION);
+        setActiveMenu(false);
+      },
+    },
+  ];
+
+  const dataProfile = {
+    nameUser:name,
+    email:email,
+    gender:gender,
+    rol:rol
+  }
+
   return (
-    <div className="h-[80px] bg-white border-b border-[#E6EFF5] flex items-center justify-between px-4">
+    <div className="h-auto bg-white border-b border-[#E6EFF5] flex items-center sm:justify-end justify-between px-4 py-3">
       <button className="sm:hidden flex" onClick={() => setViewMenuSm(true)}>
-        <img className="w-7" src={IconMenuHamburguesa} alt="" />
+        <img className="w-5" src={IconMenuHamburguesa} alt="" />
       </button>
-      <div className=" sm:flex hidden items-center justify-center px-0">
-        <h1 className="font-semibold text-black-custom sm:text-xl text-lg">
-          {text}
-        </h1>
+      <div className="flex items-center gap-3">
+        <img
+          className="w-10"
+          src={gender === "Masculino" ? ImgAvatarMen : ImgAvatarWoman}
+          alt=""
+        />
+        <div className="sm:flex flex-col hidden">
+          <p className="text-black-custom font-semibold text-sm">
+            {truncateText(name, 18)}
+          </p>
+          <p className="text-black-custom font-normal text-xs">{rol}</p>
+        </div>
+        <button
+          onClick={() => setActiveMenu((prev) => !prev)}
+          className="w-6 h-6 sm:grid border border-gray-light-custom bg-white hover:bg-[#f1f1f1] hover:scale-[98%] transition-all ease-in duration-150 rounded-md hidden place-items-center cursor-pointer"
+        >
+          <img className="w-3" src={IconArrowDownBlackCustom} alt="" />
+        </button>
+        <button
+          onClick={() => setMenuOptionsProfile((prev) => !prev)}
+          className="w-6 h-6 sm:hidden border border-gray-light-custom bg-white hover:bg-[#f1f1f1] hover:scale-[98%] transition-all ease-in duration-150 rounded-md grid place-items-center cursor-pointer"
+        >
+          <img className="w-3" src={IconArrowDownBlackCustom} alt="" />
+        </button>
       </div>
-      <button
-        className="p-2 rounded-lg bg-red-800 text-white"
-        onClick={() => fetchSignOut()}
-      >
-        {" "}
-        Cerrar sesión
-      </button>
-      <div>
-        <div className="sm:h-[60px] sm:w-[60px] h-[40px] w-[40px] rounded-full bg-primary"></div>
-      </div>
+      <AnimatePresence>
+        {activeMenu && (
+          <MenuFloat
+            activeMenu={activeMenu}
+            options={optionsAccount}
+            signOutAppAction={fetchSignOut}
+            setActiveMenu={setActiveMenu}
+            dataProfile={dataProfile}
+          />
+        )}
+      </AnimatePresence>
+      <OptionsProfile
+        setViewMenuSm={setMenuOptionsProfile}
+        isopenModal={menuOptionsProfile}
+      />
     </div>
   );
 };

@@ -16,6 +16,7 @@ const { IconDefaultUser } = Icons;
 export const CarouselAppoCenter = ({
   textCarousel = "Próximos pacientes",
   center = false,
+  affiliate = true,
 }) => {
   return (
     <>
@@ -29,7 +30,7 @@ export const CarouselAppoCenter = ({
         }}
       >
         <SwiperSlide>
-          <div className=" w-full h-full bg-primary flex items-center justify-center">
+          <div className=" w-full h-full bg-primary flex items-center justify-center rounded-xl" >
             <h1 className="text-white-custom underline font-semibold xl:text-lg">
               {textCarousel}
             </h1>
@@ -38,7 +39,7 @@ export const CarouselAppoCenter = ({
 
         {center ? (
           <SwiperSlide>
-            <div className="w-full h-full relative">
+            <div className="w-full h-full relative rounded-xl overflow-hidden">
               <img
                 className="h-full w-full z-0"
                 src="https://c1.wallpaperflare.com/preview/314/641/78/alabama-building-photos-marine-hospital.jpg"
@@ -54,16 +55,20 @@ export const CarouselAppoCenter = ({
             </div>
           </SwiperSlide>
         ) : (
+          <>
+          
           <SwiperSlide>
             <div className="  w-full min-h-full flex flex-row p-3 border bg-white border-gray-light-custom rounded-xl">
               <div className=" flex-1  px-2">
                 <div>
-                  <h1 className="text-sm font-semibold">Nombre</h1>
+                  <h1 className="text-sm font-semibold">
+                    {affiliate ? "Paciente" : "Especialista"}
+                  </h1>
                   <h1 className="text-sm font-normal">Julián David Rodri...</h1>
                 </div>
                 <div>
                   <p className="text-sm mt-1">
-                    <b>CC:</b> 1107974...
+                    <b>{affiliate ? "Cc:"  : "N°:"}</b> 1107974...
                   </p>
                 </div>
               </div>
@@ -78,6 +83,33 @@ export const CarouselAppoCenter = ({
               </div>
             </div>
           </SwiperSlide>
+          <SwiperSlide>
+            <div className="  w-full min-h-full flex flex-row p-3 border bg-white border-gray-light-custom rounded-xl">
+              <div className=" flex-1  px-2">
+                <div>
+                  <h1 className="text-sm font-semibold">
+                    {affiliate ? "Paciente" : "Especialista"}
+                  </h1>
+                  <h1 className="text-sm font-normal">Julián David Rodri...</h1>
+                </div>
+                <div>
+                  <p className="text-sm mt-1">
+                    <b>{affiliate ? "Cc:"  : "N°:"}</b> 1107974...
+                  </p>
+                </div>
+              </div>
+              <div className="border-l-2 border-gray-light-custom flex flex-col items-center justify-center px-3">
+                <div className="rounded-full overflow-hidden h-10 w-10">
+                  <img
+                    className="w-full h-full object-contain"
+                    src={IconDefaultUser}
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          </>
         )}
       </Swiper>
     </>

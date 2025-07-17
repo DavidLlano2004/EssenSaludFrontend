@@ -5,6 +5,7 @@ body{
 ::-webkit-scrollbar{
   width: 2px;
   background: #f1f1f1;
+  height: 2px;
 }
 ::-webkit-scrollbar-thumb {
   background: #888; /* Color del thumb */

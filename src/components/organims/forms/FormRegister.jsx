@@ -11,10 +11,16 @@ import { registerAppAction } from "../../../redux/actions/authAction/auth.action
 import { useIsAdult } from "../../../hooks/useIsAdult";
 import { CustomAlert } from "../../molecules/customAlert/CustomAlert";
 import { CustomSelect } from "../../molecules/select/SelectSimple";
-const { IconEmail, IconUser, IconDateInput, IconPasswordInput, IconRolesGray } =
-  Icons;
+const {
+  IconEmail,
+  IconUser,
+  IconDateInput,
+  IconPasswordInput,
+  IconGenderGray,
+  IconTypeUserGray
+} = Icons;
 
-export const FormRegister = ({ toast, rol, functionHelp }) => {
+export const FormRegister = ({ toast, rol, functionHelp = () => {} }) => {
   const [focusInputPassword, setFocusInputPassword] = useState(false);
   const [flagCorrectPassword, setFlagCorrectPassword] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -69,6 +75,21 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
     },
   ];
 
+  const genderUser = [
+    {
+      value: 1,
+      label: "Masculino",
+    },
+    {
+      value: 2,
+      label: "Femenino",
+    },
+    {
+      value: 3,
+      label: "Otro",
+    },
+  ];
+
   const esMayorDeEdad = useIsAdult(dataForm?.birthday);
 
   const registerFunction = async () => {
@@ -82,6 +103,7 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
 
     try {
       const newData = {
+        gender: dataForm?.gender?.label,
         email: dataForm?.email,
         name: dataForm?.name,
         birthday: dataForm?.birthday,
@@ -123,8 +145,21 @@ export const FormRegister = ({ toast, rol, functionHelp }) => {
             placeholder="Tipo de usuario"
             keyOption="label"
             styleLabel="xl:text-base text-sm flex justify-between"
+            iconSelect={IconTypeUserGray}
+            iconSelectStyle={"w-5 h-5"}
           />
         )}
+        <CustomSelect
+          control={control}
+          name="gender"
+          staticData={genderUser}
+          rules={{ required: "El género es requerido" }}
+          placeholder="Género"
+          keyOption="label"
+          styleLabel="xl:text-base text-sm flex justify-between"
+          iconSelect={IconGenderGray}
+          iconSelectStyle="w-6 h-6"
+        />
 
         <InputSimple
           errors={errors}

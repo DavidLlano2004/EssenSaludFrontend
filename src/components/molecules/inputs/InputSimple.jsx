@@ -44,7 +44,7 @@ export const InputSimple = ({
         <div className="flex gap-1 relative">
           {iconInput && (
             <div className="absolute top-0 h-full grid place-items-center px-3">
-              <img className="xl:w-6 xl:h-6 w-5 h-5" src={iconInput} alt="" />
+              <img className="w-5 h-5" src={iconInput} alt="" />
             </div>
           )}
           <input

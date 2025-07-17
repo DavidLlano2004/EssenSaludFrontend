@@ -8,6 +8,7 @@ const initialState = {
   birthday: "",
   userId: "",
   state: null,
+  gender:""
 };
 
 const authSlice = createSlice({
@@ -19,8 +20,9 @@ const authSlice = createSlice({
       state.name = action.payload.name;
       state.rol = action.payload.rol;
       state.birthday = action.payload.birthday;
-      state.userId = action.payload.userId;
+      state.userId = action.payload.id;
       state.state = action.payload.state;
+      state.gender = action.payload.gender;
       state.isLogged = true;
     },
     singOffCase: (state) => {

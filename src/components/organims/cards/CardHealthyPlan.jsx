@@ -29,14 +29,14 @@ export const CardHealthyPlan = ({
       {/* Contenido de la card */}
       <div className="relative bg-white rounded-2xl p-8 flex flex-col h-full">
         <h2
-          className={` font-bold text-lg z-20 ${
+          className={` font-bold lg:text-lg text-base z-20 ${
             middle ? "text-white-custom" : "text-black-custom"
           }`}
         >
           {namePlan}
         </h2>
         <div className="min-h-[100px] z-20">
-          <p className="text-black-custom">{description}</p>
+          <p className="text-black-custom :">{description}</p>
         </div>
         <div className="sm:mt-0 mt-6">
           <p className="sm:text-[40px] text-[36px] font-semibold text-black-custom ">

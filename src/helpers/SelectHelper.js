@@ -13,17 +13,15 @@ export const customStylesSelect = {
     alignItems: "center",
     gap: "8px",
   }),
-  control: (provided , state) => ({
+  control: (provided) => ({
     ...provided,
     width: "fit-content",
-    padding: "0",
-    border: state.isFocused
-      ? "0px solid #2D3436" // <-- color en foco (azul en este ejemplo)
-      : "1px solid #DADFE1",
+    padding: "0 0 0 38px",
     height: "50px",
     borderRadius: "16px",
     width: "100%",
     cursor: "pointer",
+    color:"red"
   }),
   menu: (provided) => ({
     ...provided,

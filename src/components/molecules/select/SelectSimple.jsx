@@ -24,6 +24,8 @@ export const CustomSelect = ({
   onChange,
   inputId = "selectInputId",
   defaultValue,
+  iconSelect,
+  iconSelectStyle
 }) => {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,7 +75,7 @@ export const CustomSelect = ({
         name={name}
         rules={rules}
         render={({ field, fieldState: { error } }) => (
-          <>
+          <div className="relative">
             <Select
               inputId={inputId}
               {...field}
@@ -92,9 +94,9 @@ export const CustomSelect = ({
               }
               {...(onChange ? { onChange: onChange } : null)}
             ></Select>
-
+            {iconSelect && <img className={`${iconSelectStyle} top-[14px] left-4 absolute`} src={iconSelect} alt="" />}
             {error && <CustomAlert message={error.message} type="error" />}
-          </>
+          </div>
         )}
       />
     </article>

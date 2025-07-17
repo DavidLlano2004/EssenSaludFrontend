@@ -13,6 +13,7 @@ import { CreateUserComponentModal } from "../../../components/organims/modal/cre
 import { ValidateModal } from "../../../components/organims/modal/validateModal/ValidateModal";
 import { InfoUserComponentModal } from "../../../components/organims/modal/infoUserComponentModal/InfoUserComponentModal";
 import { UpdateComponentModal } from "../../../components/organims/modal/updateComponentModal/UpdateComponentModal";
+import { Search } from "../../../components/molecules/inputs/Search";
 
 const { IconAddUser } = Icons;
 
@@ -140,7 +141,8 @@ export const HomeApp = () => {
       className="sm:p-4 p-3 flex flex-col flex-1 overflow-hidden"
     >
       <Toaster position="bottom-right" reverseOrder={true} />
-      <div className="flex flex-row justify-end">
+      <div className="flex flex-row items-end gap-4">
+        <Search width="w-full" textSearch="Buscar usuarios" />
         <ButtonTypeA
           action={() => setOpenModalCreateUsers(true)}
           submitBtn={false}
@@ -149,7 +151,7 @@ export const HomeApp = () => {
           txColor="text-white"
           bdWidth="0px"
           bgHvColor="hover:bg-primary-hover"
-          width="w-[180px]"
+          width="w-[230px]"
           alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
           heigthButton={" h-[40px]"}
           img={IconAddUser}
@@ -203,6 +205,7 @@ export const HomeApp = () => {
         closeModal={() => setOpenModalCreateUsers(false)}
         styleHW="w-[400px]"
         titleModal={"Crear usuario"}
+        itemsStart="items-center"
       >
         <CreateUserComponentModal
           functionHelpCreateUserHome={() => functionHelpCreateUserHome()}
@@ -213,6 +216,7 @@ export const HomeApp = () => {
         isOpen={openModalDeleteUser}
         closeModal={() => closeModalDeleteUser()}
         styleHW="w-[400px]"
+        itemsStart="items-center"
       >
         <ValidateModal
           actionCancel={() => closeModalDeleteUser()}
@@ -235,6 +239,7 @@ export const HomeApp = () => {
         isOpen={openModalUpdateUser}
         closeModal={() => closeModalUpdateUser()}
         styleHW="w-[600px]"
+        itemsStart="items-center"
         titleModal={"Editar el usuario"}
       >
         <UpdateComponentModal

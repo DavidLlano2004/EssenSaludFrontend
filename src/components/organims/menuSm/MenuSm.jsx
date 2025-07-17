@@ -19,6 +19,7 @@ export const MenuSm = ({ isopenModal, setViewMenuSm }) => {
       {isopenModal && (
         <>
           <motion.div
+            onClick={() => setViewMenuSm(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -29,23 +30,16 @@ export const MenuSm = ({ isopenModal, setViewMenuSm }) => {
               initial="enter"
               animate="center"
               exit="exit"
+              onClick={(e) => e.stopPropagation()}
               variants={variants}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="bg-white-custom w-[70%] flex flex-col px-2"
             >
               <div className="flex items-center justify-center gap-1 h-[80px] border-b border-gray-light-custom">
-                <img className="w-8" src={IconWeb} alt="" />
-                <h1 className=" text-xl text-primary font-semibold">
+                <img className="w-6" src={IconWeb} alt="" />
+                <h1 className=" text-lg text-primary font-semibold">
                   EssenSalud
                 </h1>
-              </div>
-              <div className="w-[30%] h-[80px] flex flex-col absolute justify-center top-0 right-0 pl-3">
-                <button
-                  onClick={() => setViewMenuSm(false)}
-                  className="w-10 h-10 bg-white grid place-items-center rounded-full"
-                >
-                  <img className="w-3" src={IconClose} alt="" />
-                </button>
               </div>
             </motion.div>
           </motion.div>

@@ -32,6 +32,7 @@ export const ValidateModal = ({
           }`}
           heigthButton={" h-[40px]"}
           imgStyles={"w-[18px]"}
+          loading={loadingButton}
         />
         <ButtonTypeA
           action={actionDelete}
@@ -48,7 +49,6 @@ export const ValidateModal = ({
           heigthButton={" h-[40px]"}
           imgStyles={"w-[18px]"}
           buttonSecondary={true}
-          loading={loadingButton}
         />
       </div>
     </div>
