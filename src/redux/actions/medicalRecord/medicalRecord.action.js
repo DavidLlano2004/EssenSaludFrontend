@@ -1,5 +1,5 @@
 import { axiosClientAuth } from "../../../config/AxiosClient";
-import { getAllMedicalRecordSlice } from "../../slices/medicalRecordSlice/MedicalRecord.slice";
+import { getAllMedicalRecordSlice } from "../../slices/medicalRecordSlice/medicalRecord.slice";
 
 export const createMedicalRecordAction = async (
   medicalAppointmentId,

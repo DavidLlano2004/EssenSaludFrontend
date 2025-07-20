@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { CustomAlert } from "../../molecules/customAlert/CustomAlert";
 import { useNavigate } from "react-router-dom";
 import { paths } from "../../../routes/paths";
-import { loginCase } from "../../../redux/slices/authSlice/Auth.Slice";
+import { loginCase } from "../../../redux/slices/authSlice/auth.slice";
 const { IconEmail, IconPasswordInput } = Icons;
 
 export const FormLogin = ({ setCurrentSection, toast }) => {

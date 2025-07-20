@@ -3,7 +3,7 @@ import {
   getAllInvoicesByUserSlice,
   getAllInvoicesSlice,
   getTotalInvoiceByUserSlice,
-} from "../../slices/invoicesSlice/Invoice.slice";
+} from "../../slices/invoicesSlice/invoice.slice";
 
 export const createInvoiceAction = async (dataForm) => {
   try {

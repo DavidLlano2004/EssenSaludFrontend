@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { verifyTokenRequest } from "../redux/actions/authAction/auth.action";
-import { loginCase, singOffCase } from "../redux/slices/authSlice/Auth.Slice";
+import { loginCase, singOffCase } from "../redux/slices/authSlice/auth.slice.js";
 import { useUIContext } from "../context/UIContext";
 
 export const useAuthInitializer = () => {

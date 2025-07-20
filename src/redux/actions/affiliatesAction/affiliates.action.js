@@ -3,7 +3,7 @@ import {
   getAllAffiliatesSlice,
   getOneAffiliateSlice,
   getUpcomingAppointmentsSlice,
-} from "../../slices/affiliatesSlice/Affiliate.Slice";
+} from "../../slices/affiliatesSlice/affiliate.slice";
 
 export const createAffiliateAction = async (dataForm) => {
   const newData = {

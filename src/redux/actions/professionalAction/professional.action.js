@@ -1,5 +1,5 @@
 import { axiosClientAuth } from "../../../config/AxiosClient";
-import { getAllProfessionalsSlice, getOneProfessionalSlice } from "../../slices/professinalSlice/Professional.Slice";
+import { getAllProfessionalsSlice, getOneProfessionalSlice } from "../../slices/professinalSlice/professional.slice";
 
 export const createProfessionalAction = async (dataForm) => {
   try {
