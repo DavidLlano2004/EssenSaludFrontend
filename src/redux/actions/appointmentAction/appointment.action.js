@@ -21,7 +21,41 @@ export const createAppointmentAction = async (dataForm) => {
       newData
     );
     console.log(data);
-    
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    return { error: error };
+  }
+};
+
+export const updateAppointmentAction = async (dataForm) => {
+  const {
+    idAppointment,
+    state,
+    date,
+    time,
+    affiliateId,
+    professionalId,
+    healthyCenterId,
+  } = dataForm;
+
+  const newData = {
+    state,
+    date,
+    time,
+    affiliateId: affiliateId?.value,
+    healthyCenterId: healthyCenterId?.value,
+    professionalId: professionalId?.value,
+  };
+
+  try {
+    const { data } = await axiosClientAuth.put(
+      `/medical-appointment/${idAppointment}`,
+      newData
+    );
+    console.log(data);
+
     return data;
   } catch (error) {
     console.error(error);
@@ -42,4 +76,15 @@ export const getAllAppointmentsAction = () => {
       throw new Error("Error insperado");
     }
   };
+};
+export const deleteAppointmentAction = async (appointmentId) => {
+  try {
+    const { data } = await axiosClientAuth.delete(
+      `/medical-appointment/${appointmentId}`
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error insperado");
+  }
 };

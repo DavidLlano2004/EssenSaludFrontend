@@ -29,7 +29,7 @@ const ComponentCreateAppointment = ({
     formState: { errors },
     watch,
     reset,
-    handleSubmit
+    handleSubmit,
   } = useForm();
 
   const dataForm = watch();
@@ -46,7 +46,19 @@ const ComponentCreateAppointment = ({
     setFlagHelpAppointment((prev) => !prev);
   };
 
+  const validatePlanAffiliate = affiliatesData?.find(
+    (affiliate) => affiliate?.userId === dataForm?.affiliateId?.value
+  );
+
   const onSubmit = () => {
+    if (validatePlanAffiliate?.healthyPlanId === null) {
+      toast.error("El usuario escogido aún no tiene un plan de salud", {
+        duration: 4000,
+      });
+      setButtonLoading(false);
+      return;
+    }
+
     createAppointmentFunction({
       dataForm: dataForm,
       onStart: onStartFunctionCreateHealthyCenter,
@@ -66,10 +78,6 @@ const ComponentCreateAppointment = ({
     (data) => data?.centerId === dataForm?.healthyCenterId?.value
   );
 
-  console.log('====================================');
-  console.log(dataForm);
-  console.log('====================================');
-
   return (
     <div className="mt-8">
       <form className=" flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
@@ -82,6 +90,7 @@ const ComponentCreateAppointment = ({
           professionalsData={dataDoctorsByCenter}
           dataForm={dataForm}
           buttonLoading={buttonLoading}
+          actionBtnCancel={() => setModalCreateAppointment(false)}
         />
       </form>
     </div>

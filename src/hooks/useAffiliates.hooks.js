@@ -3,6 +3,7 @@ import {
   createAffiliateAction,
   getAllAffiliatesAction,
   getInfoAffiliateAction,
+  getUpcomingAppointmentsAction,
   updateAffiliateAction,
 } from "../redux/actions/affiliatesAction/affiliates.action";
 import { useUsers } from "./useUsers.hooks";
@@ -76,6 +77,20 @@ export const useAffiliate = () => {
       return { state: 500, error: error };
     }
   };
+  
+  const getUpcomingAppointmentsFunction = async (userId) => {
+    try {
+      const data = await dispatch(getUpcomingAppointmentsAction(userId));
+      if (data?.error) {
+        console.error("Error al obtener las citas:", data?.error);
+        return { state: 500, error: data?.error };
+      }
+      return { state: 200 };
+    } catch (error) {
+      console.error("Error inesperado:", error);
+      return { state: 500, error: error };
+    }
+  };
 
   const updateAffiliateFunction = async ({
     idAffiliate,
@@ -102,6 +117,7 @@ export const useAffiliate = () => {
     createAffiliateFunction,
     getOneAffiliateFunction,
     updateAffiliateFunction,
-    getAllAffiliatesFunction
+    getAllAffiliatesFunction,
+    getUpcomingAppointmentsFunction
   };
 };

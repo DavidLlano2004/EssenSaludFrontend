@@ -6,6 +6,8 @@ export const Search = ({
   textSearch = "Buscar pacientes",
   width = "xl:w-[95%] sm:w-[50%]",
   disabled = false,
+  onChange,
+  value
 }) => {
   return (
     <div className={` relative ${width}`}>
@@ -13,6 +15,8 @@ export const Search = ({
         {textSearch}
       </h1>
       <input
+        value={value}
+        onChange={onChange}
         disabled={disabled}
         className={`outline-0 border border-gray-light-custom w-full ${
           !disabled ? "bg-white" : "bg-[#dfdfdf]"

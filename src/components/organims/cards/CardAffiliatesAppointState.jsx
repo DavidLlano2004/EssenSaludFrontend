@@ -9,6 +9,9 @@ const CardAffiliatesAppointState = ({
   titleCard,
   affiliate,
   dataByCards = [],
+  actionEdit,
+  actionDelete,
+  rol
 }) => {
   const colorCard = {
     programada: {
@@ -41,10 +44,13 @@ const CardAffiliatesAppointState = ({
         {dataByCards?.map((data) => (
           <CardAffiliateAppointment
             key={data?.id}
-            actionCard={actionCard}
+            actionCard={() => actionCard(data)}
             titleCard={titleCard}
             affiliate={affiliate}
             dataCard={data}
+            actionEdit={actionEdit}
+            actionDelete={actionDelete}
+            rol={rol}
           />
         ))}
       </div>

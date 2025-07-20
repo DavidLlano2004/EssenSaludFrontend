@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   affiliate: {},
   affiliatesData: [],
+  upcomingAppointments: [],
 };
 
 const affiliateSlice = createSlice({
@@ -15,8 +16,12 @@ const affiliateSlice = createSlice({
     getAllAffiliatesSlice: (state, action) => {
       state.affiliatesData = action.payload;
     },
+    getUpcomingAppointmentsSlice: (state, action) => {
+      state.upcomingAppointments = action.payload;
+    },
   },
 });
 
-export const { getOneAffiliateSlice , getAllAffiliatesSlice } = affiliateSlice.actions;
+export const { getOneAffiliateSlice, getAllAffiliatesSlice , getUpcomingAppointmentsSlice } =
+  affiliateSlice.actions;
 export default affiliateSlice.reducer;

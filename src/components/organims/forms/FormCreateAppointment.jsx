@@ -23,6 +23,10 @@ const FormCreateAppointment = ({
   professionalsData,
   dataForm,
 }) => {
+
+  console.log('====================================');
+  console.log(affiliatesData);
+  console.log('====================================');
   return (
     <>
       <div className="flex sm:flex-row flex-col items-center gap-5">
@@ -92,7 +96,7 @@ const FormCreateAppointment = ({
         keyValue={"userId"}
       />
 
-      <div className=" col-span-2 flex sm:gap-5 gap-2">
+      <div className=" col-span-2 flex sm:flex-row flex-col sm:gap-5 gap-2">
         <ButtonTypeA
           action={actionBtnCancel}
           text="Cancelar"
@@ -107,7 +111,7 @@ const FormCreateAppointment = ({
         />
         <ButtonTypeA
           submitBtn={true}
-          text="Completar"
+          text="Crear"
           bgColor="bg-primary"
           txColor="text-white"
           bdWidth="0px"

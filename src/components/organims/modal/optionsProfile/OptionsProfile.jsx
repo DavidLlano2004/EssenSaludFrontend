@@ -2,9 +2,14 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Icons } from "../../../../assets/icons/IconsProvider";
 import { ButtonTypeA } from "../../../molecules/buttons/ButtonTypeA";
-const { IconUser } = Icons;
+const { IconUser, IconLogoutWhite } = Icons;
 
-export const OptionsProfile = ({ isopenModal, setViewMenuSm }) => {
+export const OptionsProfile = ({
+  isopenModal,
+  setViewMenuSm,
+  dataProfile,
+  fetchSignOut,
+}) => {
   const variants = {
     enter: () => ({
       x: 400, // Entra desde el lado indicado
@@ -41,27 +46,28 @@ export const OptionsProfile = ({ isopenModal, setViewMenuSm }) => {
                 <div className="px-6 py-4 flex flex-col gap-3">
                   <div className="flex">
                     <p className=" font-normal text-xs bg-primary px-4 py-[3px] rounded-lg text-white-custom">
-                      Administrador
+                      {dataProfile?.rol}
                     </p>
                   </div>
                   <p className="text-black-custom font-semibold text-sm text-start">
-                    Julian David Rodríguez
+                    {dataProfile?.nameUser}
                   </p>
                   <p className="text-black-custom font-normal text-xs">
-                    juli.matias.2004@gmail.com
+                    {dataProfile?.email}
                   </p>
                 </div>
-                <div className=" border-b border-t border-gray-light-custom px-6 py-4">
+                {/* <div className=" border-b border-t border-gray-light-custom px-6 py-4">
                   <div className="flex items-center gap-3">
                     <img className="w-5" src={IconUser} alt="" />
                     <p className="text-black-custom text-sm font-normal">
                       Perfil
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="px-6 py-4">
                 <ButtonTypeA
+                  action={() => fetchSignOut()}
                   submitBtn={false}
                   text="Cerrar sesión"
                   bgColor="bg-red-custom"
@@ -71,6 +77,8 @@ export const OptionsProfile = ({ isopenModal, setViewMenuSm }) => {
                   width="w-full"
                   alternativeStyle="flex items-center justify-center gap-2 text-[14px] cursor-pointer"
                   heigthButton={"h-[38px]"}
+                  img={IconLogoutWhite}
+                  imgStyles={"w-4"}
                 />
               </div>
             </motion.div>

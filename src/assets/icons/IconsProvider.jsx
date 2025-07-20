@@ -45,6 +45,11 @@ import IconTypeUserGray from "./icon_type_user_gray.svg";
 import IconInfoHelpWhite from "./icon_info_help_white.svg";
 import IconCalendarGray from "./icon_calendar_gray.svg";
 import IconCalendarTimeGray from "./icon_calendar_time_gray.svg";
+import IconLogoutWhite from "./icon_logout_white.svg";
+import IconInvoicesBlue from "./icon_invoices_blue.svg";
+import IconInvoicesGray from "./icon_invoices_gray.svg";
+import IconDollarPayGreen from "./icon_dollar_pay_green.svg";
+import IconCheckGreenLine from "./icon_check_green_line.svg";
 
 export const Icons = {
   IconEmail,
@@ -94,4 +99,9 @@ export const Icons = {
   IconDateAppointmentWhite,
   IconCalendarGray,
   IconCalendarTimeGray,
+  IconLogoutWhite,
+  IconInvoicesBlue,
+  IconInvoicesGray,
+  IconDollarPayGreen,
+  IconCheckGreenLine
 };

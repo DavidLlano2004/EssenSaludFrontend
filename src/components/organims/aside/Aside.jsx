@@ -14,6 +14,8 @@ const {
   IconPriceBlue,
   IconDateAppointmentGrayLight,
   IconDateAppointmentBlue,
+  IconInvoicesGray,
+  IconInvoicesBlue,
 } = Icons;
 
 export const Aside = () => {
@@ -40,14 +42,6 @@ export const Aside = () => {
     },
     {
       id: 3,
-      name: "Citas",
-      iconGray: IconDateAppointmentGrayLight,
-      iconBlue: IconDateAppointmentBlue,
-      path: paths.APPOINTMENTSPROFESSIONAL,
-      handleClick: () => navigate(paths.APPOINTMENTSPROFESSIONAL),
-    },
-    {
-      id: 4,
       name: "Planes",
       iconGray: IconPriceGrayLight,
       iconBlue: IconPriceBlue,
@@ -55,20 +49,20 @@ export const Aside = () => {
       handleClick: () => navigate(paths.HEALTHYPLANS),
     },
     {
-      id: 5,
+      id: 4,
       name: "Citas",
-      iconGray: IconDateAppointmentGrayLight,
-      iconBlue: IconDateAppointmentBlue,
-      path: paths.APPOINTMENTSAFFILIATES,
-      handleClick: () => navigate(paths.APPOINTMENTSAFFILIATES),
-    },
-    {
-      id: 6,
-      name: "C. Citas",
       iconGray: IconDateAppointmentGrayLight,
       iconBlue: IconDateAppointmentBlue,
       path: paths.APPOINTMENTSADMIN,
       handleClick: () => navigate(paths.APPOINTMENTSADMIN),
+    },
+    {
+      id: 5,
+      name: "Facturas",
+      iconGray: IconInvoicesGray,
+      iconBlue: IconInvoicesBlue,
+      path: paths.INVOICES,
+      handleClick: () => navigate(paths.INVOICES),
     },
   ];
 
@@ -76,15 +70,14 @@ export const Aside = () => {
     [paths.HOME]: [paths.HOME],
     [paths.HEALTHYCENTER]: [paths.HEALTHYCENTER],
     [paths.HEALTHYPLANS]: [paths.HEALTHYPLANS],
-    [paths.APPOINTMENTSPROFESSIONAL]: [paths.APPOINTMENTSPROFESSIONAL],
-    [paths.APPOINTMENTSAFFILIATES]: [paths.APPOINTMENTSAFFILIATES],
     [paths.APPOINTMENTSADMIN]: [paths.APPOINTMENTSADMIN],
+    [paths.INVOICES]: [paths.INVOICES],
   };
 
   const allowedRoutesByRole = {
     Administrativo: [paths.HOME, paths.HEALTHYCENTER, paths.APPOINTMENTSADMIN],
-    Afiliado: [paths.HEALTHYPLANS, paths.APPOINTMENTSAFFILIATES],
-    Profesional: [paths.APPOINTMENTSPROFESSIONAL],
+    Afiliado: [paths.HEALTHYPLANS, paths.APPOINTMENTSADMIN, paths.INVOICES],
+    Profesional: [paths.APPOINTMENTSADMIN],
   };
 
   const allowedRoutes = allowedRoutesByRole[rol] || [];
@@ -92,8 +85,8 @@ export const Aside = () => {
   return (
     <div className="bg-white lg:w-[180px] border-r border-[#E6EFF5] sm:flex hidden flex-col">
       <div className="flex items-center justify-center gap-1 h-[80px] px-3">
-        <img className="w-8" src={IconWeb} alt="" />
-        <h1 className=" text-xl text-primary font-semibold">EssenSalud</h1>
+        <img className="w-6" src={IconWeb} alt="" />
+        <h1 className=" text-lg text-primary font-semibold">EssenSalud</h1>
       </div>
       <div className=" flex-1  mt-10 gap-4 flex flex-col">
         {pages

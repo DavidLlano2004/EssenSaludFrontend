@@ -10,7 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { CompleteInfoProfessionalComponentModal } from "../components/organims/modal/completeInfoProfessionalComponentModal/CompleteInfoProfessionalComponentModal";
 
 export const TemplateApp = () => {
-  const { userId, rol, state } = useSelector((state) => state.auth);
+  const { rol, state } = useSelector((state) => state.auth);
   const [viewMenuSm, setViewMenuSm] = useState(false);
   const [validateInfoAffiliate, setValidateInfoAffiliate] = useState(false);
   const [validateInfoProfesional, setValidateInfoProfesional] = useState(false);
@@ -42,6 +42,7 @@ export const TemplateApp = () => {
         isOpen={validateInfoAffiliate}
         styleHW="w-[600px]"
         titleModal={"Completar información"}
+        itemsStart="items-center"
       >
         <CompleteInfoAffiliateComponentModal
           setValidateInfoAffiliate={setValidateInfoAffiliate}
@@ -52,6 +53,7 @@ export const TemplateApp = () => {
         isOpen={validateInfoProfesional}
         styleHW="w-[600px]"
         titleModal={"Completar información"}
+        itemsStart="items-center"
       >
         <CompleteInfoProfessionalComponentModal
           setValidateInfoProfesional={setValidateInfoProfesional}

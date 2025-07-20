@@ -172,7 +172,6 @@ export const UpdateComponentModal = ({
           control={control}
           name="gender"
           staticData={genderUser}
-          rules={{ required: "El género es requerido" }}
           placeholder="Género"
           keyOption="label"
           styleLabel="xl:text-base text-sm flex justify-between"
@@ -203,6 +202,7 @@ export const UpdateComponentModal = ({
             register={register}
             placeholder="Ingresa tu fecha de nacimiento"
             defaultValue={userData?.birthday}
+            min={false}
           />
           {alertText && <CustomAlert message={alertText} type="error" />}
         </div>

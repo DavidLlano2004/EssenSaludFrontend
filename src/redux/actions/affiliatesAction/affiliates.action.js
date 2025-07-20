@@ -2,6 +2,7 @@ import { axiosClientAuth } from "../../../config/AxiosClient";
 import {
   getAllAffiliatesSlice,
   getOneAffiliateSlice,
+  getUpcomingAppointmentsSlice,
 } from "../../slices/affiliatesSlice/Affiliate.Slice";
 
 export const createAffiliateAction = async (dataForm) => {
@@ -39,6 +40,22 @@ export const getAllAffiliatesAction = () => {
       const { data } = await axiosClientAuth.get(`/affiliates`);
 
       dispatch(getAllAffiliatesSlice(data.response));
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error insperado");
+    }
+  };
+};
+
+export const getUpcomingAppointmentsAction = (userId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axiosClientAuth.get(
+        `/affiliate/appointments/upcoming/${userId}`
+      );
+
+      dispatch(getUpcomingAppointmentsSlice(data.response));
       return data;
     } catch (error) {
       console.error(error);

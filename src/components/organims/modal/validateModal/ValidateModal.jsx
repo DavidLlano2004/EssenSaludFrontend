@@ -17,7 +17,7 @@ export const ValidateModal = ({
         {title}
       </h1>
       <p className="text-center sm:text-base text-sm mt-2">{subtitle}</p>
-      <div className="w-full flex mt-8 gap-3 mb-3 ">
+      <div className="w-full flex sm:flex-row flex-col mt-8 gap-3 mb-3 ">
         <ButtonTypeA
           action={actionCancel}
           submitBtn={false}

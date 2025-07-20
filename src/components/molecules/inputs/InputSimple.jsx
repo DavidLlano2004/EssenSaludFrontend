@@ -31,6 +31,7 @@ export const InputSimple = ({
   dataTestId = "inputSimple",
   styleContainerLabelInput = "flex flex-col w-full",
   iconInput,
+  min = true,
   ...props
 }) => {
   return (
@@ -74,6 +75,7 @@ export const InputSimple = ({
               }
             }}
             {...(onChangeInput ? { onChange: onChangeInput } : null)}
+            min={min && type === "date" ? new Date().toISOString().split("T")[0] : null}
           />
         </div>
 

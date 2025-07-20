@@ -126,6 +126,7 @@ export const HealthyPlans = () => {
         isOpen={openModalConfirm}
         closeModal={() => closeModalConfirmFunction()}
         styleHW="w-[400px]"
+        itemsStart="items-center"
       >
         <ValidateModal
           actionCancel={() => onSubmit()}

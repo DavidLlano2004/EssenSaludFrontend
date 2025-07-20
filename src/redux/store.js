@@ -8,7 +8,8 @@ import healthyPlanReducer from "./slices/healthyPlansSlice/healthyPlans.slice.js
 import affiliatesReducer from "./slices/affiliatesSlice/Affiliate.Slice.js";
 import professionalsReducer from "./slices/professinalSlice/Professional.Slice.js";
 import appointmentReducer from "./slices/appointmentSlice/Appointment.slice.js";
-
+import recordReducer from "./slices/medicalRecordSlice/MedicalRecord.slice.js";
+import invoiceReducer from "./slices/invoicesSlice/Invoice.slice.js";
 
 const persistConfig = {
   key: "root",
@@ -20,6 +21,7 @@ const persistConfig = {
     "affiliates",
     "professionals",
     "appointment",
+    "medicalRecord"
   ],
 };
 
@@ -31,6 +33,8 @@ export const appReducer = combineReducers({
   affiliates: affiliatesReducer,
   professionals: professionalsReducer,
   appointment: appointmentReducer,
+  medicalRecord: recordReducer,
+  invoice: invoiceReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import CardAffiliatesAppointState from "../cards/CardAffiliatesAppointState";
 import { EmptyData } from "../../molecules/emptyData/EmptyData";
+import { useState } from "react";
 
 export const AppointmentState = ({
   actionCard,
-  titleCard,
-  affiliate,
   appointments,
+  setIsOpenModalUpdateAppoinment,
+  setDataUpdate,
+  setValidateModalDeleteAppointment,
+  rol
 }) => {
   const filterDataAppointmentProgress = appointments?.filter(
     (data) => data?.state === "programada"
@@ -17,6 +20,17 @@ export const AppointmentState = ({
   const filterDataAppointmentEnd = appointments?.filter(
     (data) => data?.state === "realizada"
   );
+
+  const editAppointmentUI = (data) => {
+    setIsOpenModalUpdateAppoinment(true);
+    setDataUpdate(data);
+    console.log(data);
+  };
+
+  const deleteAppoinmentUI = (data) => {
+    setValidateModalDeleteAppointment(true);
+    setDataUpdate(data);
+  };
 
   return (
     <>
@@ -33,31 +47,40 @@ export const AppointmentState = ({
           </h1>
           <div className="grid lg:grid-cols-3 grid-cols-1 flex-1 gap-3">
             <CardAffiliatesAppointState
-              actionCard={() => actionCard(0)}
+              actionCard={actionCard}
               textState={"Programada"}
               numberAppoints={filterDataAppointmentProgress?.length}
               stateAppoint="programada"
               dataByCards={filterDataAppointmentProgress}
+              actionEdit={editAppointmentUI}
+              actionDelete={deleteAppoinmentUI}
+              rol={rol}
             />
             <CardAffiliatesAppointState
-              actionCard={() => actionCard(1)}
+              actionCard={actionCard}
               textState={"Cancelada"}
               numberAppoints={filterDataAppointmentCancel?.length}
               stateAppoint="cancelada"
               dataByCards={filterDataAppointmentCancel}
+              actionEdit={editAppointmentUI}
+              actionDelete={deleteAppoinmentUI}
+              rol={rol}
             />
             <CardAffiliatesAppointState
-              actionCard={() => actionCard(1)}
+              actionCard={actionCard}
               textState={"Realizada"}
               numberAppoints={filterDataAppointmentEnd?.length}
               stateAppoint="realizada"
               dataByCards={filterDataAppointmentEnd}
+              actionEdit={editAppointmentUI}
+              actionDelete={deleteAppoinmentUI}
+              rol={rol}
             />
           </div>
         </motion.div>
       ) : (
         <div className=" flex-1 flex justify-center items-center">
-          <EmptyData />
+          <EmptyData textEmpty="Aún no tienes citas programadas" />
         </div>
       )}
     </>

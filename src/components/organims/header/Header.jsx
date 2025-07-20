@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Icons } from "../../../assets/icons/IconsProvider";
 import { paths } from "../../../routes/paths";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth.hooks";
 import { Images } from "../../../assets/images/ImagesProvider";
 import { AnimatePresence } from "framer-motion";
@@ -19,13 +19,15 @@ export const Header = ({ setViewMenuSm }) => {
   const [menuOptionsProfile, setMenuOptionsProfile] = useState(false);
   const { fetchSignOut } = useAuth();
 
+  const navigate = useNavigate();
+
   const optionsAccount = [
     {
       id: 1,
       title: "Perfil",
       img: IconUser,
       handleClick: () => {
-        navigate(paths.ORGANIZATION);
+        navigate(paths.PROFILE);
         setActiveMenu(false);
       },
     },
@@ -43,6 +45,7 @@ export const Header = ({ setViewMenuSm }) => {
       <button className="sm:hidden flex" onClick={() => setViewMenuSm(true)}>
         <img className="w-5" src={IconMenuHamburguesa} alt="" />
       </button>
+     
       <div className="flex items-center gap-3">
         <img
           className="w-10"
@@ -82,6 +85,8 @@ export const Header = ({ setViewMenuSm }) => {
       <OptionsProfile
         setViewMenuSm={setMenuOptionsProfile}
         isopenModal={menuOptionsProfile}
+        dataProfile={dataProfile}
+        fetchSignOut={fetchSignOut}
       />
     </div>
   );

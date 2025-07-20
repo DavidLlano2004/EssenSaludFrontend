@@ -17,7 +17,7 @@ const {
   IconDateInput,
   IconPasswordInput,
   IconGenderGray,
-  IconTypeUserGray
+  IconTypeUserGray,
 } = Icons;
 
 export const FormRegister = ({ toast, rol, functionHelp = () => {} }) => {
@@ -174,6 +174,7 @@ export const FormRegister = ({ toast, rol, functionHelp = () => {} }) => {
         />
         <div>
           <InputSimple
+            min={false}
             errors={errors}
             inputStyle="border border-gray-light-custom xl:py-3 py-[10px] text-base pl-12 pr-3 rounded-2xl text-black-custom"
             iconInput={IconDateInput}

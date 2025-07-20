@@ -31,6 +31,8 @@ export const HomeApp = () => {
   const [openModalDeleteUser, setOpenModalDeleteUser] = useState(false);
   const [openModalInfoUser, setOpenModalInfoUser] = useState(false);
   const [openModalUpdateUser, setOpenModalUpdateUser] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para la búsqueda
+  const [filteredTournaments, setFilteredTournaments] = useState([]);
 
   const [tabsUsers, setTabUsers] = useState([
     {
@@ -115,15 +117,19 @@ export const HomeApp = () => {
   const filteredUsers = useMemo(() => {
     switch (currentSection) {
       case 0:
-        return users;
+        return filteredTournaments;
       case 1:
-        return users?.filter((user) => user?.rol === "Afiliado");
+        return filteredTournaments?.filter((user) => user?.rol === "Afiliado");
       case 2:
-        return users?.filter((user) => user?.rol === "Profesional");
+        return filteredTournaments?.filter(
+          (user) => user?.rol === "Profesional"
+        );
       default:
-        return users?.filter((user) => user?.rol === "Administrativo");
+        return filteredTournaments?.filter(
+          (user) => user?.rol === "Administrativo"
+        );
     }
-  }, [currentSection, users]);
+  }, [currentSection, filteredTournaments]);
 
   useEffect(() => {
     setLoading(true);
@@ -131,6 +137,17 @@ export const HomeApp = () => {
       data?.state === 200 && setLoading(false);
     });
   }, [flagCreateUserHome]);
+
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredTournaments(users);
+    } else {
+      const filtered = users.filter((user) =>
+        user?.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredTournaments(filtered);
+    }
+  }, [searchTerm, users]);
 
   return (
     <motion.div
@@ -141,22 +158,31 @@ export const HomeApp = () => {
       className="sm:p-4 p-3 flex flex-col flex-1 overflow-hidden"
     >
       <Toaster position="bottom-right" reverseOrder={true} />
-      <div className="flex flex-row items-end gap-4">
-        <Search width="w-full" textSearch="Buscar usuarios" />
-        <ButtonTypeA
-          action={() => setOpenModalCreateUsers(true)}
-          submitBtn={false}
-          text="Crear usuario"
-          bgColor="bg-primary"
-          txColor="text-white"
-          bdWidth="0px"
-          bgHvColor="hover:bg-primary-hover"
-          width="w-[230px]"
-          alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
-          heigthButton={" h-[40px]"}
-          img={IconAddUser}
-          imgStyles={"w-[18px]"}
-        />
+      <div className="flex sm:flex-row flex-col items-end gap-4 w-full">
+        <div className="sm:order-1 order-2 sm:flex-1 w-full">
+          <Search
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            width="w-full"
+            textSearch="Buscar usuarios"
+          />
+        </div>
+        <div className="sm:order-2 order-1 sm:w-auto w-full">
+          <ButtonTypeA
+            action={() => setOpenModalCreateUsers(true)}
+            submitBtn={false}
+            text="Crear usuario"
+            bgColor="bg-primary"
+            txColor="text-white"
+            bdWidth="0px"
+            bgHvColor="hover:bg-primary-hover"
+            width="sm:w-[230px] w-full"
+            alternativeStyle="flex items-center justify-center gap-2 xl:text-base text-[14px] cursor-pointer"
+            heigthButton={" h-[40px]"}
+            img={IconAddUser}
+            imgStyles={"w-[18px]"}
+          />
+        </div>
       </div>
       <div className="min-h-8 mt-4 gap-3 lg:flex hidden">
         {tabsUsers?.map((tab) => (
@@ -232,6 +258,7 @@ export const HomeApp = () => {
         closeModal={() => closeModalInfoUser()}
         styleHW="w-[600px]"
         titleModal={"Información del usuario"}
+        itemsStart="items-center"
       >
         <InfoUserComponentModal userData={userData} />
       </Modal>

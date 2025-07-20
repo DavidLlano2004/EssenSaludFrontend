@@ -96,9 +96,7 @@ export const HealthyCenters = () => {
       className="sm:p-4 p-3 flex flex-col flex-1 overflow-hidden"
     >
       <Toaster position="bottom-right" reverseOrder={true} />
-      <div className="flex flex-row items-end gap-4">
-        <Search width="w-full" textSearch="Buscar centros" />
-        <div>
+      <div className="flex flex-row items-end justify-end">
           <ButtonTypeA
             action={() => setModalCreateHealthyCenter(true)}
             submitBtn={false}
@@ -114,7 +112,6 @@ export const HealthyCenters = () => {
             img={IconAddHealthyCenterWhite}
             imgStyles={"w-[18px]"}
           />
-        </div>
       </div>
       <div className="flex-1 w-full mt-4 overflow-y-auto ">
         {loading ? (

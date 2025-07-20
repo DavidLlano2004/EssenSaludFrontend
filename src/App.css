@@ -3,9 +3,9 @@ body{
 }
 
 ::-webkit-scrollbar{
-  width: 2px;
+  width: 3px;
   background: #f1f1f1;
-  height: 2px;
+  height: 3px;
 }
 ::-webkit-scrollbar-thumb {
   background: #888; /* Color del thumb */

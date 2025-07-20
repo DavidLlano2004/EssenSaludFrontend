@@ -11,13 +11,11 @@ import "./CarouselAppoCenter.css";
 // import required modules
 import { Navigation, Autoplay } from "swiper/modules";
 import { Icons } from "../../../../assets/icons/IconsProvider";
+import { truncateText } from "../../../../helpers/truncateText";
+import { motion } from "framer-motion";
 const { IconDefaultUser } = Icons;
 
-export const CarouselAppoCenter = ({
-  textCarousel = "Próximos pacientes",
-  center = false,
-  affiliate = true,
-}) => {
+export const CarouselAppoCenter = ({ rol, upcomingAppointments , actionCardCarousel }) => {
   return (
     <>
       <Swiper
@@ -30,45 +28,39 @@ export const CarouselAppoCenter = ({
         }}
       >
         <SwiperSlide>
-          <div className=" w-full h-full bg-primary flex items-center justify-center rounded-xl" >
+          <div className=" w-full h-full bg-primary flex items-center justify-center rounded-xl">
             <h1 className="text-white-custom underline font-semibold xl:text-lg">
-              {textCarousel}
+              {rol === "Afiliado" ? "Próximas citas" : "Próximos pacientes"}
             </h1>
           </div>
         </SwiperSlide>
 
-        {center ? (
-          <SwiperSlide>
-            <div className="w-full h-full relative rounded-xl overflow-hidden">
-              <img
-                className="h-full w-full z-0"
-                src="https://c1.wallpaperflare.com/preview/314/641/78/alabama-building-photos-marine-hospital.jpg"
-                alt=""
-              />
-              <div className="bg-linear-to-b from-transparent to-black w-full h-full absolute z-10 top-0 flex flex-col justify-end items-center">
-                <div className="w-full h-auto py-2 px-4">
-                  <h1 className="text-white-custom">
-                    Sede: <b className="font-light">Santillana</b>
-                  </h1>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ) : (
-          <>
-          
-          <SwiperSlide>
-            <div className="  w-full min-h-full flex flex-row p-3 border bg-white border-gray-light-custom rounded-xl">
+        {upcomingAppointments?.map((appointment) => (
+          <SwiperSlide key={appointment?.id}>
+            <motion.div
+              onClick={() => actionCardCarousel(appointment)}
+              className="  w-full min-h-full flex flex-row p-3 border bg-white border-gray-light-custom hover:bg-[#fafafa] transition-all ease-in duration-200 rounded-xl cursor-pointer"
+            >
               <div className=" flex-1  px-2">
                 <div>
                   <h1 className="text-sm font-semibold">
-                    {affiliate ? "Paciente" : "Especialista"}
+                    {rol === "Profesional" ? "Paciente" : "Especialista"}
                   </h1>
-                  <h1 className="text-sm font-normal">Julián David Rodri...</h1>
+                  <h1 className="text-sm font-normal">
+                    {rol === "Afiliado"
+                      ? appointment?.infoProfessional?.user?.name
+                      : appointment?.infoAffiliate?.user?.name}
+                  </h1>
                 </div>
                 <div>
                   <p className="text-sm mt-1">
-                    <b>{affiliate ? "Cc:"  : "N°:"}</b> 1107974...
+                    <b>{rol === "Profesional" ? "Cc: " : "N°: "}</b>
+                    {truncateText(
+                      rol === "Afiliado"
+                        ? String(appointment?.infoProfessional?.license_number)
+                        : String(appointment?.infoAffiliate?.document_number),
+                      10
+                    )}
                   </p>
                 </div>
               </div>
@@ -81,36 +73,9 @@ export const CarouselAppoCenter = ({
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </SwiperSlide>
-          <SwiperSlide>
-            <div className="  w-full min-h-full flex flex-row p-3 border bg-white border-gray-light-custom rounded-xl">
-              <div className=" flex-1  px-2">
-                <div>
-                  <h1 className="text-sm font-semibold">
-                    {affiliate ? "Paciente" : "Especialista"}
-                  </h1>
-                  <h1 className="text-sm font-normal">Julián David Rodri...</h1>
-                </div>
-                <div>
-                  <p className="text-sm mt-1">
-                    <b>{affiliate ? "Cc:"  : "N°:"}</b> 1107974...
-                  </p>
-                </div>
-              </div>
-              <div className="border-l-2 border-gray-light-custom flex flex-col items-center justify-center px-3">
-                <div className="rounded-full overflow-hidden h-10 w-10">
-                  <img
-                    className="w-full h-full object-contain"
-                    src={IconDefaultUser}
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          </>
-        )}
+        ))}
       </Swiper>
     </>
   );

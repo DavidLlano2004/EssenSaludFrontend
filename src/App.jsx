@@ -11,9 +11,9 @@ import { HealthyCenters } from "./pages/app/HealthyCenters/HealthyCenters";
 import { HealthyPlans } from "./pages/app/HealthyPlans/HealthyPlans";
 import { ProtectedRouteByRole } from "./components/organims/protectedRoute/ProtectedRouteByRole";
 import { RedirectByRole } from "./components/organims/protectedRoute/RedirectByRole";
-import { AppointmentsProfessional } from "./pages/app/Appointments/AppointmentsProfessional";
-import { AppointmentsAffiliates } from "./pages/app/Appointments/AppointmentsAffiliates";
 import AppointmentsAdmin from "./pages/app/Appointments/AppointmentsAdmin";
+import Invoices from "./pages/app/Invoices/Invoices";
+import ProfileUser from "./pages/app/ProfileUser/ProfileUser";
 
 function App() {
   useAuthInitializer();
@@ -30,9 +30,9 @@ function App() {
               <Route path={paths.HOME} element={<HomeApp />} />
               <Route path={paths.HEALTHYCENTER} element={<HealthyCenters />} />
               <Route path={paths.HEALTHYPLANS} element={<HealthyPlans />} />
-              <Route path={paths.APPOINTMENTSPROFESSIONAL} element={<AppointmentsProfessional />} />
-              <Route path={paths.APPOINTMENTSAFFILIATES} element={<AppointmentsAffiliates />} />
               <Route path={paths.APPOINTMENTSADMIN} element={<AppointmentsAdmin />} />
+              <Route path={paths.INVOICES} element={<Invoices />} />
+              <Route path={paths.PROFILE} element={<ProfileUser />} />
             </Route>
           </Route>
         </Route>

@@ -2,9 +2,9 @@ export const paths = {
   TEMPLATEAUTH: "/",
   TEMPLATEAPP: "/app",
   HOME: "/app/home",
+  PROFILE: "/app/profile",
   HEALTHYCENTER: "/app/healthy-center",
-  APPOINTMENTSPROFESSIONAL: "/app/appointments-professional",
-  APPOINTMENTSAFFILIATES: "/app/appointments-affiliate",
-  APPOINTMENTSADMIN: "/app/appointments-admin",
+  APPOINTMENTSADMIN: "/app/appointments",
   HEALTHYPLANS: "/app/healthy-plans",
+  INVOICES: "/app/invoices",
 };

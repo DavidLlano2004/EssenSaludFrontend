@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Icons } from "../../../assets/icons/IconsProvider";
 import { ButtonTypeA } from "../buttons/ButtonTypeA";
 import { useClickOutside } from "../../../hooks/useClickOutside";
-const { IconCloseSesionRed } = Icons;
+const { IconLogoutWhite } = Icons;
 
 export const MenuFloat = ({
   options,
@@ -33,20 +33,20 @@ export const MenuFloat = ({
           {dataProfile?.email}
         </p>
       </div>
-      <ul className="p-7 text-start">
+      {/* <ul className="p-7 text-start">
         {options.map((option, index) => (
-          <li
+          <button
             key={index}
-            className={` ${index == 1 && "flex"} ${
+            className={` w-full ${index == 1 && "flex"} ${
               index === 1 && "md:hidden"
             } flex py-2 px-4 hover:bg-[#d8d9dd] rounded-lg transition duration-200 ease-in cursor-pointer text-[#282828] text-sm  items-center gap-3 font-medium`}
             onClick={option?.handleClick} // Cerrar el menú al hacer clic en una opción
           >
             <img className="w-4" src={option?.img} alt="" />
             {option?.title}
-          </li>
+          </button>
         ))}
-      </ul>
+      </ul> */}
       <div className="py-4 px-5 border-t border-gray-light-custom">
         <ButtonTypeA
           submitBtn={false}
@@ -59,6 +59,8 @@ export const MenuFloat = ({
           alternativeStyle="flex items-center justify-center gap-2 text-[14px] cursor-pointer"
           heigthButton={"h-[40px]"}
           action={signOutAppAction}
+          img={IconLogoutWhite}
+          imgStyles={"w-4"}
         />
       </div>
     </motion.div>

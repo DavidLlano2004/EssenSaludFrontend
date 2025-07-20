@@ -1,18 +1,25 @@
 import { motion } from "framer-motion";
 import React from "react";
-import { Icons } from "../../../assets/icons/IconsProvider";
 import {
   formatearFechaConSlashes,
   formatearHoraA12Horas,
 } from "../../../helpers/truncateDate";
-const { IconDefaultUser } = Icons;
+import { Images } from "../../../assets/images/ImagesProvider";
+import { Icons } from "../../../assets/icons/IconsProvider";
+const { ImgAvatarMen, ImgAvatarWoman } = Images;
+const { IconEditYellow, IconDeleteRed } = Icons;
 
 const CardAffiliateAppointment = ({
   actionCard,
   titleCard = "Paciente",
   affiliate = true,
   dataCard,
+  actionEdit,
+  actionDelete,
+  rol,
 }) => {
+  console.log(dataCard);
+
   return (
     <motion.div
       onClick={actionCard}
@@ -34,16 +41,26 @@ const CardAffiliateAppointment = ({
         <div className="w-11 h-11 rounded-full overflow-hidden">
           <img
             className="w-full h-full object-contain"
-            src={IconDefaultUser}
+            src={
+              rol === "Afiliado"
+                ? dataCard?.infoProfessional?.user?.gender === "Masculino"
+                  ? ImgAvatarMen
+                  : ImgAvatarWoman
+                : dataCard?.infoAffiliate?.user?.gender === "Masculino"
+                ? ImgAvatarMen
+                : ImgAvatarWoman
+            }
             alt=""
           />
         </div>
         <div>
           <h1 className="text-base font-semibold text-black-custom">
-            {titleCard}
+            {rol === "Afiliado" ? "Especialista" : "Paciente"}
           </h1>
           <p className="text-sm text-black-custom">
-            {dataCard?.infoAffiliate?.user?.name}
+            {rol === "Afiliado"
+              ? dataCard?.infoProfessional?.user?.name
+              : dataCard?.infoAffiliate?.user?.name}
           </p>
         </div>
       </div>
@@ -52,20 +69,47 @@ const CardAffiliateAppointment = ({
       <div className="flex">
         <div>
           <h1 className="text-base font-semibold text-black-custom">
-            {affiliate ? "Cc: " : "N° de licencia:"}
+            {rol === "Profesional" ? "Cc: " : "N° de licencia: "}
             <b className="font-normal">
-              {dataCard?.infoAffiliate?.document_number}
+              {rol === "Afiliado"
+                ? dataCard?.infoProfessional?.license_number
+                : dataCard?.infoAffiliate?.document_number}
             </b>
           </h1>
           <h1 className="text-base font-semibold text-black-custom">
             {affiliate ? "Correo:" : "Especialidad:"}{" "}
             <b className="font-normal">
-              {dataCard?.infoAffiliate?.user?.email}
+              {rol === "Afiliado"
+                ? dataCard?.infoProfessional?.user?.email
+                : dataCard?.infoAffiliate?.user?.email}
             </b>
           </h1>
         </div>
-        <div></div>
       </div>
+      {rol === "Admistrativo" && (
+        <div className="mt-5 flex justify-end gap-5">
+          {dataCard?.state === "programada" && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                actionEdit(dataCard);
+              }}
+              className="w-9 h-9 rounded-lg bg-yellow-custom/20 hover:bg-yellow-custom/30 cursor-pointer grid place-items-center transition-all ease-in duration-150"
+            >
+              <img className="w-4" src={IconEditYellow} alt="" />
+            </button>
+          )}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              actionDelete(dataCard);
+            }}
+            className="w-9 h-9 rounded-lg bg-red-custom/20 hover:bg-red-custom/30 cursor-pointer grid place-items-center transition-all ease-in duration-150"
+          >
+            <img className="w-4" src={IconDeleteRed} alt="" />
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 };
