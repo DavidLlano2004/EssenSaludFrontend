@@ -2,7 +2,9 @@ import { axiosClientAuth } from "../../../config/AxiosClient";
 
 export const loginAppAction = async (user) => {
   try {
-    const { data } = await axiosClientAuth.post("/login", user);
+    const { data } = await axiosClientAuth.post("/login", user, {
+      withCredentials: true,
+    });
 
     return { verify: true, response: data };
   } catch (error) {
