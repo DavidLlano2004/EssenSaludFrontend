@@ -3,7 +3,9 @@ import { axiosClientAuth } from "../../../config/AxiosClient";
 export const loginAppAction = async (user) => {
   //   return async (dispatch) => {
   try {
-    const { data } = await axiosClientAuth.post("/login", user);
+    const { data } = await axiosClientAuth.post("/login", user, {
+      withCredentials: true,
+    });
     //   dispatch(loginCase(data?.response))
 
     return { verify: true, response: data };
@@ -13,14 +15,14 @@ export const loginAppAction = async (user) => {
   //   };
 };
 export const registerAppAction = async (dataForm) => {
-  const { email, name, birthday, password , rol , gender } = dataForm;
+  const { email, name, birthday, password, rol, gender } = dataForm;
   const newData = {
     email,
     name,
     birthday,
     password,
     rol,
-    gender
+    gender,
   };
   try {
     const response = await axiosClientAuth.post("/register", newData);
@@ -33,7 +35,7 @@ export const registerAppAction = async (dataForm) => {
 export const verifyTokenRequest = async () => {
   try {
     const response = await axiosClientAuth.get("/verify");
-    
+
     return response;
   } catch (error) {
     return { error: error };
