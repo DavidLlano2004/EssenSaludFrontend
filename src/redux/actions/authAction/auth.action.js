@@ -1,18 +1,13 @@
 import { axiosClientAuth } from "../../../config/AxiosClient";
 
 export const loginAppAction = async (user) => {
-  //   return async (dispatch) => {
   try {
-    const { data } = await axiosClientAuth.post("/login", user, {
-      withCredentials: true,
-    });
-    //   dispatch(loginCase(data?.response))
+    const { data } = await axiosClientAuth.post("/login", user);
 
     return { verify: true, response: data };
   } catch (error) {
     return { error: error?.response?.data?.message, verify: false };
   }
-  //   };
 };
 export const registerAppAction = async (dataForm) => {
   const { email, name, birthday, password, rol, gender } = dataForm;

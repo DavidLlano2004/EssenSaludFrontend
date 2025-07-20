@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { useAuthInitializer } from "./hooks/useAuthInitializer";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes, BrowserRouter } from "react-router-dom";
 import { paths } from "./routes/paths";
 import { TemplateAuth } from "./templates/TemplateAuth";
 import { ProtectedRoute } from "./components/organims/protectedRoute/ProtectedRoute";
@@ -19,7 +19,7 @@ function App() {
   useAuthInitializer();
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path={paths.TEMPLATEAUTH} element={<TemplateAuth />} />
 
@@ -30,14 +30,17 @@ function App() {
               <Route path={paths.HOME} element={<HomeApp />} />
               <Route path={paths.HEALTHYCENTER} element={<HealthyCenters />} />
               <Route path={paths.HEALTHYPLANS} element={<HealthyPlans />} />
-              <Route path={paths.APPOINTMENTSADMIN} element={<AppointmentsAdmin />} />
+              <Route
+                path={paths.APPOINTMENTSADMIN}
+                element={<AppointmentsAdmin />}
+              />
               <Route path={paths.INVOICES} element={<Invoices />} />
               <Route path={paths.PROFILE} element={<ProfileUser />} />
             </Route>
           </Route>
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

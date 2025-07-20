@@ -13,7 +13,7 @@ const { IconMenuHamburguesa, IconArrowDownBlackCustom, IconUser } = Icons;
 const { ImgAvatarMen, ImgAvatarWoman } = Images;
 
 export const Header = ({ setViewMenuSm }) => {
-  const { gender, name , rol , email } = useSelector((state) => state.auth);
+  const { gender, name, rol, email } = useSelector((state) => state.auth);
 
   const [activeMenu, setActiveMenu] = useState(false);
   const [menuOptionsProfile, setMenuOptionsProfile] = useState(false);
@@ -34,18 +34,18 @@ export const Header = ({ setViewMenuSm }) => {
   ];
 
   const dataProfile = {
-    nameUser:name,
-    email:email,
-    gender:gender,
-    rol:rol
-  }
+    nameUser: name,
+    email: email,
+    gender: gender,
+    rol: rol,
+  };
 
   return (
     <div className="h-auto bg-white border-b border-[#E6EFF5] flex items-center sm:justify-end justify-between px-4 py-3">
       <button className="sm:hidden flex" onClick={() => setViewMenuSm(true)}>
         <img className="w-5" src={IconMenuHamburguesa} alt="" />
       </button>
-     
+
       <div className="flex items-center gap-3">
         <img
           className="w-10"
@@ -76,7 +76,7 @@ export const Header = ({ setViewMenuSm }) => {
           <MenuFloat
             activeMenu={activeMenu}
             options={optionsAccount}
-            signOutAppAction={fetchSignOut}
+            signOutAppAction={() => fetchSignOut()}
             setActiveMenu={setActiveMenu}
             dataProfile={dataProfile}
           />
@@ -86,7 +86,7 @@ export const Header = ({ setViewMenuSm }) => {
         setViewMenuSm={setMenuOptionsProfile}
         isopenModal={menuOptionsProfile}
         dataProfile={dataProfile}
-        fetchSignOut={fetchSignOut}
+        fetchSignOut={() => fetchSignOut()}
       />
     </div>
   );
