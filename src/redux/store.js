@@ -7,7 +7,7 @@ import healthyCenterReducer from "./slices/healthyCenterSlice/healthyCenter.slic
 import healthyPlanReducer from "./slices/healthyPlansSlice/healthyPlans.slice.js";
 import affiliatesReducer from "./slices/affiliatesSlice/Affiliate.Slice.js";
 import professionalsReducer from "./slices/professinalSlice/Professional.Slice.js";
-import appointmentReducer from "./slices/appointmentSlice/Appointment.slice.js";
+import appointmentReducer from "./slices/appointmentSlice/appointment.slice.js";
 import recordReducer from "./slices/medicalRecordSlice/MedicalRecord.slice.js";
 import invoiceReducer from "./slices/invoicesSlice/Invoice.slice.js";
 
