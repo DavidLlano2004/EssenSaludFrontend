@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import authReducer from "./slices/authSlice/Auth.Slice.js";
+import authReducer from "./slices/authSlice/auth.slice.js";
 import userReducer from "./slices/userSlice/user.slice.js";
 import healthyCenterReducer from "./slices/healthyCenterSlice/healthyCenter.slice.js";
 import healthyPlanReducer from "./slices/healthyPlansSlice/healthyPlans.slice.js";
